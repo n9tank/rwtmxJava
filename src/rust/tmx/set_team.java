@@ -13,7 +13,7 @@ public int team;
  protected void before() throws Exception {
   super.before();
   triggers trg=m;
-  trg.mbuff.append('>');
+  trg.mbuff.write('>');
   trg.append("setTeam", team, -3);
  }
 }

@@ -11,7 +11,7 @@ public int zoomTo;
  protected void before() throws Exception {
   super.before();
   triggers trg=m;
-  trg.mbuff.append('>');
+  trg.mbuff.write('>');
   m.append("zoomTo",zoomTo,0);
  }
 }

@@ -34,20 +34,20 @@ public class point {
  protected void before() throws Exception {
   triggers triggers=m;
   BufferedWriter buff=triggers.mbuff;
-  buff.append("<object type=\"");
+  buff.write("<object type=\"");
   String type=getClass().getSimpleName();
-  buff.append(type);
+  buff.write(type);
   String ids=id;
   if (ids != null) {
-   buff.append("\"name=\"");
-   buff.append(ids);
+   buff.write("\"name=\"");
+   buff.write(ids);
   }
   if (!unxy) {
-   buff.append("\"x=\"");
-   buff.append(triggers.floatNum(x));
-   buff.append("\"y=\"");
-   buff.append(triggers.floatNum(y));
+   buff.write("\"x=\"");
+   buff.write(triggers.floatNum(x));
+   buff.write("\"y=\"");
+   buff.write(triggers.floatNum(y));
   }
-  buff.append("\"");
+  buff.write("\"");
  }
 }

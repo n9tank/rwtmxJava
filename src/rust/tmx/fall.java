@@ -20,11 +20,11 @@ public class fall extends point {
   super.before();
   if(!unBox){
   BufferedWriter buff=m.mbuff;
-  buff.append("\"width=\"");
-  buff.append(triggers.floatNum(w));
-  buff.append("\"height=\"");
-  buff.append(triggers.floatNum(h));
-  buff.append("\"");
+  buff.write("\"width=\"");
+  buff.write(triggers.floatNum(w));
+  buff.write("\"height=\"");
+  buff.write(triggers.floatNum(h));
+  buff.write("\"");
   }
  }
 }

@@ -59,14 +59,14 @@ public class triggers {
    BufferedWriter buff=mbuff;
    if (!start) {
     start = true;
-    buff.append("<properties>");
+    buff.write("<properties>");
    }
-   buff.append("<property name=\"");
-   buff.append(key);
-   buff.append("\"value=\"");
+   buff.write("<property name=\"");
+   buff.write(key);
+   buff.write("\"value=\"");
    value = value.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;").replace("'", "&apos;");
-   buff.append(value);
-   buff.append("\"/>");
+   buff.write(value);
+   buff.write("\"/>");
   }
  }
  protected void append(String key, int i, int def) throws IOException {
@@ -89,8 +89,8 @@ public class triggers {
   BufferedWriter buff=mbuff;
   if (start) {
    start = false;
-   buff.append("</properties></object>");
-  } else buff.append("/>");
+   buff.write("</properties></object>");
+  } else buff.write("/>");
  }
  public String fog;
  public String info;
@@ -101,7 +101,7 @@ public class triggers {
  public String waves;
  private String type;
  public void finsh() throws Exception {
-  mbuff.append("<objectgroup name=\"Triggers\"><object type=\"map_info\">");
+  mbuff.write("<objectgroup name=\"Triggers\"><object type=\"map_info\">");
   append("type",type);
   append("fog", fog);
   append("introText", info);
@@ -115,7 +115,7 @@ public class triggers {
   int size=arr.size();
   while (--size >= 0)arr.get(size).call();
   arr.clear();
-  mbuff.append("</objectgroup name=\"Triggers\">");
+  mbuff.write("</objectgroup name=\"Triggers\">");
  }
  protected String id(int i, boolean igron) {
   StringBuilder buff=warp;

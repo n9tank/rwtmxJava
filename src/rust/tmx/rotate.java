@@ -13,7 +13,7 @@ public class rotate extends fall {
  protected void before() throws Exception {
   super.before();
   triggers trg=m;
-  trg.mbuff.append('>');
+  trg.mbuff.write('>');
   trg.append("dir", dir);
  }
 }
