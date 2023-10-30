@@ -22,7 +22,7 @@ public class triggers implements Closeable {
  public static final String win_none="none";
  protected StringBuilder warp;
  protected StringBuilder warp2;
- protected float x;
+ protected float x=-16777216;
  protected float y=-250;
  protected float max;
  protected ArrayList queue;
@@ -31,9 +31,9 @@ public class triggers implements Closeable {
   float ma=max;
   float y0=y;
   if (h > ma)max = ma = h;
-  x0 -= w;
+  x0 += w;
   if (x0 >= 16777216) {
-   x0 = 0;
+   x0 = -16777216;
    y = y0 -= ma;
    max = 0;
   }
