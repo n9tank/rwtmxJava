@@ -50,7 +50,7 @@ public class triggers implements Closeable {
   queue = new ArrayList();
   id = new int[minTeam + 2];
  }
- protected BufferedWriter mbuff;
+ public BufferedWriter mbuff;
  protected int mid;
  protected int[] id;
  protected int mbool;
@@ -119,8 +119,6 @@ public class triggers implements Closeable {
  public void finsh() throws Exception {
   flush();
   mbuff.append("</objectgroup name=\"Triggers\">");
-  mbuff.flush();
-  close();
  }
  public void close() throws IOException {
   mbuff.close();
