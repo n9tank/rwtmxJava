@@ -10,20 +10,22 @@ public class fall extends point {
   super(x0, y0, g);
   w = w0;
   h = h0;
+  useId=false;
  }
  public fall(int x0, int y0, int w0, int h0, triggers triggers) {
   super(x0, y0, triggers);
   w = w0;
   h = h0;
+  useId=false;
  }
- public void before() throws Exception {
+ protected void before() throws Exception {
   super.before();
   if(!unBox){
   BufferedWriter buff=m.mbuff;
   buff.append("\"width=\"");
-  buff.append(floatNum(w));
+  buff.append(triggers.floatNum(w));
   buff.append("\"height=\"");
-  buff.append(floatNum(h));
+  buff.append(triggers.floatNum(h));
   buff.append("\"");
   }
  }

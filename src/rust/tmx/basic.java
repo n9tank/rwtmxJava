@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
-public class basic extends fall implements Callable {
+public class basic extends set_team implements Callable {
  private ArrayList msg;
  public String debug;
  public String msgDelay;
@@ -46,14 +46,14 @@ public class basic extends fall implements Callable {
   list.add(lang);
  }
  public basic(int x0, int y0, int w0, int h0, point g) {
-  super(x0, y0, w0, h0, g);
+  super(x0, y0, w0, h0, g,-3);
   msg = new ArrayList();
  }
  public basic(int x0, int y0, int w0, int h0, triggers triggers) {
-  super(x0, y0, w0, h0, triggers);
+  super(x0, y0, w0, h0, triggers,-3);
   msg = new ArrayList();
  }
- public void before() throws Exception{
+ protected void before() throws Exception{
   super.before();
   triggers triggers=m;
   triggers.append("showOnMap", showOnMap);

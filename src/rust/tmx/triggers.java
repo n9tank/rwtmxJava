@@ -50,11 +50,21 @@ public class triggers implements Closeable {
    buff.append("\"/>");
   }
  }
- protected void append(String key, int i) throws IOException {
-  if (i != 0)append(key, String.valueOf(i));
+ protected void append(String key,int i,int def) throws IOException {
+  if (i != def)append(key, String.valueOf(i));
  }
  protected void append(String key, boolean i) throws IOException {
   if (i)append(key,String.valueOf(i));
+ }
+ protected void append(String key,float num) throws IOException{
+  if(num!=0f)append(key,floatNum(num));
+ }
+ protected static String floatNum(float f) {
+  int to=(int)f;
+  String s;
+  if (f == to)s = String.valueOf(to);
+  else s = String.valueOf(f);
+  return s;
  }
  protected void endObj() throws IOException {
   BufferedWriter buff=mbuff;

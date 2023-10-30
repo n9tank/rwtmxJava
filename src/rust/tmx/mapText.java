@@ -23,14 +23,14 @@ public class mapText extends basic {
   arr.add(add);
   arr.add(lang);
  }
- public void before() throws Exception {
+ protected void before() throws Exception {
   super.before();
   triggers triggers=m;
   if(style)triggers.append("style","arrow");
   triggers.append("textColor",color);
-  triggers.append("textOffsetX",floatNum(offX));
-  triggers.append("textOffsety",floatNum(offY));
-  triggers.append("textSize",size);
+  triggers.append("textOffsetX",offX);
+  triggers.append("textOffsety",offY);
+  triggers.append("textSize",size,0);
   ArrayList<String> arr=text;
   int i=arr.size();
   while (--i >= 0)triggers.append("text".concat(arr.get(i)), arr.get(--i));
