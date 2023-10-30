@@ -9,8 +9,7 @@ import java.util.ArrayList;
 public class Mbool {
  private teamTags set;
  private teamTags unset;
- private teamTagDetect isTrue;
- private teamTagDetect isFase;
+ private teamTagDetect bool;
  private triggers m;
  private String id;
  private int mv;
@@ -26,7 +25,7 @@ public class Mbool {
  public teamTags set(boolean bool) {
   teamTags tag=bool ?set: unset;
   if (tag == null) {
-   tag = new teamTags(m,mv);
+   tag = new teamTags(m, mv);
    if (bool) {
     tag.addTeamTags = id;
     set = tag;
@@ -37,12 +36,11 @@ public class Mbool {
   }
   return tag;
  }
- public teamTagDetect eqz(boolean bool) {
-  teamTagDetect tag=bool ?isTrue: isFase;
+ public teamTagDetect True() {
+  teamTagDetect tag=bool;
   if (tag == null) {
    tag = new teamTagDetect(m, mv, id);
-   if (bool)isTrue = tag;
-   else isFase = tag;
+   bool = tag;
   }
   return tag;
  }
