@@ -9,13 +9,13 @@ public class point {
  protected float y;
  protected boolean useId;
  protected boolean unxy;
- public point(int x0, int y0, point g) {
+ public point(float x0, float y0, point g) {
   x = g.x + x0;
   y = g.y + y0;
   m = g.m;
   useId = true;
  }
- public point(int x0, int y0, triggers triggers) {
+ public point(float x0, float y0, triggers triggers) {
   x = x0;
   y = y0;
   m = triggers;
@@ -23,7 +23,7 @@ public class point {
  }
  protected String id() {
   String ids=id;
-  if (id == null)id = ids = m.id(++m.mid);
+  if (id == null)id = ids = m.id(++m.mid,true);
   return ids;
  }
  public void apply() throws Exception {

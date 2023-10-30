@@ -1,12 +1,12 @@
 package rust.tmx;
 
 public class objective extends basic {
- public objective(int x0, int y0, triggers triggers) {
-  super(x0, y0, 0, 0, triggers);
+ public objective(float x0, float y0, triggers triggers) {
+  super(x0, y0, 0f, 0f, triggers);
   unBox=true;
  }
- public objective(int x0, int y0, point g) {
-  super(x0, y0, 0, 0, g);
+ public objective(float x0, float y0, point g) {
+  super(x0, y0, 0f, 0f, g);
   unBox=true;
  }
 }

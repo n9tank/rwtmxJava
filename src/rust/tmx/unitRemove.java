@@ -1,12 +1,12 @@
 package rust.tmx;
 
-public class unitRemove extends basic{
- public unitRemove(int x0, int y0, point g) {
-  super(x0, y0, 0, 0, g);
-  useId=false;
+public class unitRemove extends basic {
+ public unitRemove(float x0, float y0, float w, float h, point g) {
+  super(x0, y0, w, h, g);
+  useId = false;
  }
- public unitRemove(int x0, int y0, triggers triggers) {
-  super(x0, y0, 0, 0, triggers);
-  useId=false;
+ public unitRemove(float x0, float y0, float w, float h, triggers triggers) {
+  super(x0, y0, w, h, triggers);
+  useId = false;
  }
 }

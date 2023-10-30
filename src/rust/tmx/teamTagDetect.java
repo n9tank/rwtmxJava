@@ -3,7 +3,7 @@ package rust.tmx;
 public class teamTagDetect extends basic {
  private String tag;
  public teamTagDetect(triggers triggers, int team, String add) {
-  super(0, 0, 0, 0, triggers);
+  super(0f, 0f, 0f, 0f, triggers);
   unBox = true;
   this.team = team;
   tag = add;
@@ -11,7 +11,7 @@ public class teamTagDetect extends basic {
   unxy=true;
  }
  public teamTagDetect(point g, int team, String add) {
-  super(0, 0, 0, 0, g);
+  super(0f, 0f, 0f, 0f, g);
   unBox = true;
   this.team = team;
   tag = add;

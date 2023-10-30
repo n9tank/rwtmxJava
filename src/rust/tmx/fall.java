@@ -6,13 +6,13 @@ public class fall extends point {
  protected boolean unBox;
  protected float w;
  protected float h;
- public fall(int x0, int y0, int w0, int h0, point g) {
+ public fall(float x0, float y0, float w0, float h0, point g) {
   super(x0, y0, g);
   w = w0;
   h = h0;
   useId=false;
  }
- public fall(int x0, int y0, int w0, int h0, triggers triggers) {
+ public fall(float x0, float y0, float w0, float h0, triggers triggers) {
   super(x0, y0, triggers);
   w = w0;
   h = h0;

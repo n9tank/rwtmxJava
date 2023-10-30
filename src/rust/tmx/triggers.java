@@ -21,17 +21,34 @@ public class triggers implements Closeable {
  public static final String win_requiredObjectives="requiredObjectives";
  public static final String win_none="none";
  protected StringBuilder warp;
- protected  StringBuilder warp2;
+ protected StringBuilder warp2;
+ protected float x;
+ protected float y=-250;
+ protected float max;
  protected ArrayList queue;
- public triggers(String map_type,Writer out,int minTeam) throws IOException {
+ public float getPos(float w, float h) {
+  float x0=x;
+  float ma=max;
+  float y0=y;
+  if (h > ma)max = ma = h;
+  x0 -= w;
+  if (x0 >= 16777216) {
+   x0 = 0;
+   y = y0 -= ma;
+   max = 0;
+  }
+  x=x0;
+  return x0;
+ }
+ public triggers(String map_type, Writer out, int minTeam) throws IOException {
   BufferedWriter buff = new BufferedWriter(out);
   buff.append("<objectgroup name=\"Triggers\"><object type=\"map_info\">");
   mbuff = buff;
   append("type", map_type);
-  warp=new StringBuilder();
-  warp2=new StringBuilder();
-  queue=new ArrayList();
-  id=new int[minTeam+2];
+  warp = new StringBuilder();
+  warp2 = new StringBuilder();
+  queue = new ArrayList();
+  id = new int[minTeam + 2];
  }
  protected BufferedWriter mbuff;
  protected int mid;
@@ -53,14 +70,14 @@ public class triggers implements Closeable {
    buff.append("\"/>");
   }
  }
- protected void append(String key,int i,int def) throws IOException {
+ protected void append(String key, int i, int def) throws IOException {
   if (i != def)append(key, String.valueOf(i));
  }
  protected void append(String key, boolean i) throws IOException {
-  if (i)append(key,"true");
+  if (i)append(key, "true");
  }
- protected void append(String key,float num) throws IOException{
-  if(num!=0f)append(key,floatNum(num));
+ protected void append(String key, float num) throws IOException {
+  if (num != 0f)append(key, floatNum(num));
  }
  protected static String floatNum(float f) {
   int to=(int)f;
@@ -93,10 +110,10 @@ public class triggers implements Closeable {
   append("survivalWaves", waves);
   endObj();
  }
- public void flush() throws Exception{
+ public void flush() throws Exception {
   ArrayList<Callable> arr=queue;
   int size=arr.size();
-  while(--size>=0)arr.get(size).call();
+  while (--size >= 0)arr.get(size).call();
   arr.clear();
  }
  public void finsh() throws Exception {
@@ -105,23 +122,26 @@ public class triggers implements Closeable {
   mbuff.flush();
   close();
  }
- public void close() throws IOException{
+ public void close() throws IOException {
   mbuff.close();
  }
- protected String id(int i){
+ protected String id(int i, boolean igron) {
   StringBuilder buff=warp;
   buff.setLength(0);
   do{
-  char mod=0;
-  i/=90;
-  mod+=i%90+'!';
-  if(mod>='\"')++mod;
-  if(mod>='&')mod+=2;
-  if(mod>=',')++mod;
-  if(mod>='<')++mod;
-  if(mod>='>')++mod;
-  buff.append(mod);
-  }while(i>0);
+   char mod=0;
+   i /= 90;
+   mod += i % 90 + '!';
+   if (mod >= '\"')++mod;
+   if (mod >= '&')mod += 2;
+   if (mod >= ',')++mod;
+   if (mod >= '<')++mod;
+   if (mod >= '>')++mod;
+   if (!igron && (mod >= 'a' || mod <= 'z')) {
+    mod -= 33;
+   }
+   buff.append(mod);
+  }while(i > 0);
   return buff.toString();
  }
 }

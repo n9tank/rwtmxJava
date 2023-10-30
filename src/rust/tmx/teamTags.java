@@ -4,12 +4,12 @@ public class teamTags extends basic {
  public String addTeamTags;
  public String removeTeamTags;
  public teamTags(triggers triggers, int team) {
-  super(0, 0, 0, 0, triggers);
+  super(0f, 0f, 0f, 0f, triggers);
   unxy=unBox = true;
   this.team = team;
  }
  public teamTags(point g, int team) {
-  super(0, 0, 0, 0, g);
+  super(0f, 0f, 0f, 0f, g);
   unxy=unBox = true;
   this.team = team;
  }

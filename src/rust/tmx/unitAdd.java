@@ -21,14 +21,14 @@ public class unitAdd extends basic {
    tmp -= w;
   }while(++i < len);
  }
- public unitAdd(int x0, int y0, triggers triggers, int team, spawnUnit ...add) {
-  super(x0, y0, 0, 0, triggers);
+ public unitAdd(float x0, float y0, triggers triggers, int team, spawnUnit ...add) {
+  super(x0, y0, 0f, 0f, triggers);
   unBox = true;
   this.team = team;
   spawnUnit = add;
  }
- public unitAdd(int x0, int y0, point g, int team, spawnUnit ...add) {
-  super(x0, y0, 0, 0, g);
+ public unitAdd(float x0, float y0, point g, int team, spawnUnit ...add) {
+  super(x0, y0, 0f, 0f, g);
   unBox = true;
   this.team = team;
   spawnUnit = add;
@@ -53,8 +53,8 @@ public class unitAdd extends basic {
  private void add(String key, int i) {
   if (i != 0)add(key, String.valueOf(i));
  }
- private void add(String key,float f){
-  if(f!=0)add(key,triggers.floatNum(f));
+ private void add(String key, float f) {
+  if (f != 0)add(key, triggers.floatNum(f));
  }
  private void end() {
   StringBuilder buff=m.warp;
@@ -83,19 +83,19 @@ public class unitAdd extends basic {
     }
     add("falling", unit.falling);
     add("gridAlign", unit.gridAlign);
-    add("techLevel",unit.techLevel);
-    add("spawnChance",unit.spawnChance);
+    add("techLevel", unit.techLevel);
+    add("spawnChance", unit.spawnChance);
     add("maxSpawnLimit", unit.maxSpawnLimit);
-    add("neutralTeam",unit.neutralTeam);
-    add("aggressiveTeam",unit.aggressiveTeam);
-    add("offsetDir",unit.offsetDir);
-    add("offsetHeight",unit.offsetHeight);
-    add("offsetRandomX",unit.offsetRandomX);
-    add("offsetRandomXY",unit.offsetRandomXY);
-    add("offsetRandomY",unit.offsetRandomY);
-    add("offsetX",unit.offsetX);
-    add("offsetY",unit.offsetY);
-    add("skipIfOverlapping",unit.skipIfOverlapping);
+    add("neutralTeam", unit.neutralTeam);
+    add("aggressiveTeam", unit.aggressiveTeam);
+    add("offsetDir", unit.offsetDir);
+    add("offsetHeight", unit.offsetHeight);
+    add("offsetRandomX", unit.offsetRandomX);
+    add("offsetRandomXY", unit.offsetRandomXY);
+    add("offsetRandomY", unit.offsetRandomY);
+    add("offsetX", unit.offsetX);
+    add("offsetY", unit.offsetY);
+    add("skipIfOverlapping", unit.skipIfOverlapping);
     end();
    }while(++i < len);
    trg.append("spawnUnits", buff.toString());
