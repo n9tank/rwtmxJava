@@ -8,11 +8,6 @@ public class unitObjects {
   out = wt;
   wt.write("<objectgroup name=\"UnitObjects\">");
  }
- public void add(unitDetect de, int def) throws Exception {
-  int team=de.team;
-  if (team == -3)team = def;
-  add(de.x, de.y, de.team, de.unitType);
- }
  public void add(float x, float y, int team, String type) throws IOException {
   BufferedWriter wt=out;
   wt.write("<object x=\"");
