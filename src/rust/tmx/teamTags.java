@@ -5,12 +5,12 @@ public class teamTags extends basic {
  public String removeTeamTags;
  public teamTags(triggers triggers, int team) {
   super(0, 0, 0, 0, triggers);
-  unBox = true;
+  unxy=unBox = true;
   this.team = team;
  }
  public teamTags(point g, int team) {
   super(0, 0, 0, 0, g);
-  unBox = true;
+  unxy=unBox = true;
   this.team = team;
  }
  protected void before() throws Exception {
