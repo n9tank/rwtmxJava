@@ -23,7 +23,7 @@ public class triggers implements Closeable {
  protected StringBuilder warp;
  protected  StringBuilder warp2;
  protected ArrayList queue;
- public triggers(String map_type,Writer out) throws IOException {
+ public triggers(String map_type,Writer out,int minTeam) throws IOException {
   BufferedWriter buff = new BufferedWriter(out);
   buff.append("<objectgroup name=\"Triggers\"><object type=\"map_info\">");
   mbuff = buff;
@@ -31,9 +31,12 @@ public class triggers implements Closeable {
   warp=new StringBuilder();
   warp2=new StringBuilder();
   queue=new ArrayList();
+  id=new int[minTeam+2];
  }
  protected BufferedWriter mbuff;
  protected int mid;
+ protected int[] id;
+ protected int mbool;
  protected boolean start;
  protected void append(String key, String value) throws IOException {
   if (value != null) {
@@ -54,7 +57,7 @@ public class triggers implements Closeable {
   if (i != def)append(key, String.valueOf(i));
  }
  protected void append(String key, boolean i) throws IOException {
-  if (i)append(key,String.valueOf(i));
+  if (i)append(key,"true");
  }
  protected void append(String key,float num) throws IOException{
   if(num!=0f)append(key,floatNum(num));
@@ -105,10 +108,9 @@ public class triggers implements Closeable {
  public void close() throws IOException{
   mbuff.close();
  }
- protected String id(){
+ protected String id(int i){
   StringBuilder buff=warp;
   buff.setLength(0);
-  int i=mid++;
   do{
   int mod=i%90;
   i/=90;

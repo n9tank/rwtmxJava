@@ -61,7 +61,7 @@ public class basic extends set_team implements Callable {
   triggers.append("activatedBy", link);
   triggers.append("allToActivate", linkAll);
   triggers.append("deactivatedBy", dlink);
-  triggers.append("alsoActivate", alsoLink);
+  triggers.append("activateIds", alsoLink);
   triggers.append("debugMessage", debug);
   triggers.append("warmup", warmup);
   triggers.append("delay", delay);
