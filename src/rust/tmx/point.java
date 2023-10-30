@@ -33,7 +33,7 @@ public class point {
  protected void before() throws Exception {
   triggers triggers=m;
   BufferedWriter buff=triggers.mbuff;
-  buff.write("<object type=\"");
+  buff.write("<object name=\"");
   String type=getClass().getSimpleName();
   buff.write(type);
   String ids=id;
