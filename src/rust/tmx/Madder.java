@@ -14,8 +14,8 @@ public class Madder {
  private HashMap<Integer,unitAdd> map;
  private HashMap<String,unitDetect> eqz;
  private int team;
- public Madder(triggers trg, float w0) {
-  this(trg, trg.getPos(w0, w0), trg.y, w0, unitType.other_dummyNonUnitWithTeam, -1);
+ public Madder(triggers trg) {
+  this(trg, trg.getPos(1f, 1f), trg.y, 1f, unitType.other_dummyNonUnitWithTeam, -1);
   safe = true;
  }
  public Madder(triggers trg, float x0, float y0, float w0, String type, int t) {
