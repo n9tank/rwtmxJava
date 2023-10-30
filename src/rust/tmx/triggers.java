@@ -25,7 +25,7 @@ public class triggers implements Closeable {
  protected float x=-16777216;
  protected float y=-250;
  protected float max;
- protected ArrayList queue;
+ public ArrayList queue;
  public float getPos(float w, float h) {
   float x0=x;
   float ma=max;
@@ -42,9 +42,8 @@ public class triggers implements Closeable {
  }
  public triggers(String map_type, Writer out, int minTeam) throws IOException {
   BufferedWriter buff = new BufferedWriter(out);
-  buff.append("<objectgroup name=\"Triggers\"><object type=\"map_info\">");
   mbuff = buff;
-  append("type", map_type);
+  type=map_type;
   warp = new StringBuilder();
   warp2 = new StringBuilder();
   queue = new ArrayList();
@@ -100,7 +99,10 @@ public class triggers implements Closeable {
  public boolean oldWaves;
  public String music;
  public String waves;
- public void commit() throws IOException {
+ private String type;
+ public void finsh() throws Exception {
+  mbuff.append("<objectgroup name=\"Triggers\"><object type=\"map_info\">");
+  append("type",type);
   append("fog", fog);
   append("introText", info);
   append("winCondition", win);
@@ -109,15 +111,10 @@ public class triggers implements Closeable {
   append("startWithMusic", music);
   append("survivalWaves", waves);
   endObj();
- }
- public void flush() throws Exception {
   ArrayList<Callable> arr=queue;
   int size=arr.size();
   while (--size >= 0)arr.get(size).call();
   arr.clear();
- }
- public void finsh() throws Exception {
-  flush();
   mbuff.append("</objectgroup name=\"Triggers\">");
  }
  public void close() throws IOException {

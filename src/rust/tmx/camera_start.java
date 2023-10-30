@@ -4,11 +4,9 @@ public class camera_start extends point{
 public int zoomTo;
  public camera_start(float x0, float y0,point g) {
   super(x0, y0, g);
-  useId=false;
  }
  public camera_start(float x0, float y0,triggers triggers) {
   super(x0, y0, triggers);
-  useId=false;
  }
  protected void before() throws Exception {
   super.before();

@@ -10,13 +10,11 @@ public class fall extends point {
   super(x0, y0, g);
   w = w0;
   h = h0;
-  useId=false;
  }
  public fall(float x0, float y0, float w0, float h0, triggers triggers) {
   super(x0, y0, triggers);
   w = w0;
   h = h0;
-  useId=false;
  }
  protected void before() throws Exception {
   super.before();

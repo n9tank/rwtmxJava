@@ -22,6 +22,7 @@ public class team_info implements Callable {
  public team_info(int id,triggers trg) {
   t = id;
   m=trg;
+  trg.queue.add(this);
  }
  public Object call() throws IOException {
   triggers trg=m;

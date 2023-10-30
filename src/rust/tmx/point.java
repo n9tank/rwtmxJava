@@ -7,31 +7,24 @@ public class point {
  protected triggers m;
  protected float x;
  protected float y;
- protected boolean useId;
  protected boolean unxy;
  public point(float x0, float y0, point g) {
   x = g.x + x0;
   y = g.y + y0;
-  m = g.m;
-  useId = true;
+  triggers trg = g.m;
+  m=trg;
+  trg.queue.add(this);
  }
  public point(float x0, float y0, triggers triggers) {
   x = x0;
   y = y0;
   m = triggers;
-  useId = true;
+  triggers.queue.add(this);
  }
  protected String id() {
   String ids=id;
-  if (id == null)id = ids = m.id(++m.mid,true);
+  if (id == null)id = ids = m.id(++m.mid, true);
   return ids;
- }
- public void apply() throws Exception {
-  String str;
-  if (useId)str = id();
-  else str = id;
-  if (str == null)m.queue.add(this);
-  else call();
  }
  public Object call() throws Exception {
   before();
