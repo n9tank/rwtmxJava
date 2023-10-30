@@ -48,10 +48,12 @@ public class basic extends set_team implements Callable {
  public basic(float x0, float y0, float w0, float h0, point g) {
   super(x0, y0, w0, h0, g,-3);
   msg = new ArrayList();
+  unBox=true;
  }
  public basic(float x0, float y0, float w0, float h0, triggers triggers) {
   super(x0, y0, w0, h0, triggers,-3);
   msg = new ArrayList();
+  unBox=true;
  }
  protected void before() throws Exception{
   super.before();

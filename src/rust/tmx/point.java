@@ -7,12 +7,11 @@ public class point {
  protected triggers m;
  protected float x;
  protected float y;
- protected boolean unxy;
  public point(float x0, float y0, point g) {
   x = g.x + x0;
   y = g.y + y0;
   triggers trg = g.m;
-  m=trg;
+  m = trg;
   trg.queue.add(this);
  }
  public point(float x0, float y0, triggers triggers) {
@@ -42,12 +41,10 @@ public class point {
    buff.write("\"name=\"");
    buff.write(ids);
   }
-  if (!unxy) {
-   buff.write("\"x=\"");
-   buff.write(triggers.floatNum(x));
-   buff.write("\"y=\"");
-   buff.write(triggers.floatNum(y));
-  }
+  buff.write("\"x=\"");
+  buff.write(triggers.floatNum(x));
+  buff.write("\"y=\"");
+  buff.write(triggers.floatNum(y));
   buff.write("\"");
  }
 }

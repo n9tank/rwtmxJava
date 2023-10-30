@@ -23,13 +23,11 @@ public class unitAdd extends basic {
  }
  public unitAdd(float x0, float y0, triggers triggers, int team, spawnUnit ...add) {
   super(x0, y0, 0f, 0f, triggers);
-  unBox = true;
   this.team = team;
   spawnUnit = add;
  }
  public unitAdd(float x0, float y0, point g, int team, spawnUnit ...add) {
   super(x0, y0, 0f, 0f, g);
-  unBox = true;
   this.team = team;
   spawnUnit = add;
  }

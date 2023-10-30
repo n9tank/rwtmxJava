@@ -1,18 +1,20 @@
 
 import java.io.OutputStreamWriter;
-import rust.tmx.triggers;
-import rust.tmx.unitObjects;
-import rust.tmx.unitDetect;
-import rust.tmx.unitType;
-import java.io.BufferedWriter;
+import rust.tmx.*;
 public class Main {
  public static void main(String ...arg) throws Exception {
- // triggers all=new triggers(triggers.map_, new OutputStreamWriter(System.out), 0);
-  BufferedWriter buff=new BufferedWriter(new OutputStreamWriter(System.out));
-  unitObjects obj=new unitObjects(buff);
-  obj.add(0, 0, 0, unitType.sea_gunBoat);
+ triggers all=new triggers(triggers.map_, new OutputStreamWriter(System.out), 0);
+  unitObjects obj=new unitObjects(all.mbuff);
+  obj.add(0, 0, 0, unitType.land_tank);
   obj.end();
-  buff.flush();
+  unitDetect de=new unitDetect(0, 0, 20, 20, all);
+  de.resetActivationAfter="1s";
+  basic bac=new basic(0, 0, 20, 20, de);
+  bac.link(de);
+  bac.resetActivationAfter="1s";
+  bac.msg("","hello_world");
+  all.finsh();
+  all.mbuff.flush();
   System.out.println();
  }
 }

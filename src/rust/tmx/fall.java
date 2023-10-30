@@ -20,7 +20,7 @@ public class fall extends point {
   super.before();
   if(!unBox){
   BufferedWriter buff=m.mbuff;
-  buff.write("\"width=\"");
+  buff.write("width=\"");
   buff.write(triggers.floatNum(w));
   buff.write("\"height=\"");
   buff.write(triggers.floatNum(h));

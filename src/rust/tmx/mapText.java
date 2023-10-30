@@ -11,12 +11,10 @@ public class mapText extends basic {
  public mapText(float x0, float y0, point g) {
   super(x0, y0, 0f, 0f, g);
   text = new ArrayList();
-  unBox = true;
  }
  public mapText(float x0, float y0, triggers triggers) {
   super(x0, y0, 0f, 0f, triggers);
   text = new ArrayList();
-  unBox = true;
  }
  public void textLang(String lang,String add){
   ArrayList<String> arr=text;

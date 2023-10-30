@@ -101,7 +101,7 @@ public class triggers {
  public String waves;
  private String type;
  public void finsh() throws Exception {
-  mbuff.write("<objectgroup name=\"Triggers\"><object type=\"map_info\">");
+  mbuff.write("<objectgroup name=\"Triggers\"><object nanme=\"map_info\"x=\"0\"y=\"0\">");
   append("type",type);
   append("fog", fog);
   append("introText", info);
@@ -115,7 +115,7 @@ public class triggers {
   int size=arr.size();
   while (--size >= 0)arr.get(size).call();
   arr.clear();
-  mbuff.write("</objectgroup name=\"Triggers\">");
+  mbuff.write("</objectgroup>");
  }
  protected String id(int i, boolean igron) {
   StringBuilder buff=warp;
