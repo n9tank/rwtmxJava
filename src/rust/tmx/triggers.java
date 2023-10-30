@@ -101,7 +101,7 @@ public class triggers {
  public String waves;
  private String type;
  public void finsh() throws Exception {
-  mbuff.write("<objectgroup name=\"Triggers\"><object nanme=\"map_info\"x=\"0\"y=\"0\">");
+  mbuff.write("<objectgroup name=\"Triggers\"><object name=\"map_info\"x=\"0\"y=\"0\">");
   append("type",type);
   append("fog", fog);
   append("introText", info);
