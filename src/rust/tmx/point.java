@@ -48,7 +48,6 @@ public class point {
   if (ids != null) {
    buff.append("\"name=\"");
    buff.append(ids);
-   buff.append("\"");
   }
   if (!unxy) {
    buff.append("\"x=\"");

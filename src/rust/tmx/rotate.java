@@ -12,6 +12,8 @@ public class rotate extends fall {
  }
  protected void before() throws Exception {
   super.before();
-  m.append("dir", dir);
+  triggers trg=m;
+  trg.mbuff.append('>');
+  trg.append("dir", dir);
  }
 }

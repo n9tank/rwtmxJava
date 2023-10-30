@@ -112,9 +112,9 @@ public class triggers implements Closeable {
   StringBuilder buff=warp;
   buff.setLength(0);
   do{
-  int mod=i%90;
+  char mod=0;
   i/=90;
-  mod+='!';
+  mod+=i%90+'!';
   if(mod>='\"')++mod;
   if(mod>='&')mod+=2;
   if(mod>=',')++mod;
