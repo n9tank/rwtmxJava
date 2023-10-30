@@ -6,7 +6,7 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
-public class triggers implements Closeable {
+public class triggers {
  public static final String map_survival="survival";
  public static final String map_="skirmish";
  public static final String map_mission="mission";
@@ -116,9 +116,6 @@ public class triggers implements Closeable {
   while (--size >= 0)arr.get(size).call();
   arr.clear();
   mbuff.append("</objectgroup name=\"Triggers\">");
- }
- public void close() throws IOException {
-  mbuff.close();
  }
  protected String id(int i, boolean igron) {
   StringBuilder buff=warp;
