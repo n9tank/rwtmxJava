@@ -26,7 +26,7 @@ public class team_info implements Callable {
  }
  public Object call() throws IOException {
   triggers trg=m;
-  trg.mbuff.write("<object name=\"team_info\">");
+  trg.mbuff.write("<object type=\"team_info\">");
   trg.append("team",t,0);
   trg.append("disabledAI",aiUse);
   trg.append("allyGroup",teams,0);
