@@ -21,12 +21,12 @@ public class Mbool {
   int index=trg.mbool++;
   mv = (index % len) - 2;
   index /= len;
-  id = trg.id(index,false);
+  id = trg.id(index);
  }
  public teamTags set(boolean bool) {
   teamTags tag=bool ?set: unset;
   if (tag == null) {
-   tag = new teamTags(m,mv -= 2);
+   tag = new teamTags(m,mv);
    if (bool) {
     tag.addTeamTags = id;
     set = tag;

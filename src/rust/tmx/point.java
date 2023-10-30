@@ -22,7 +22,7 @@ public class point {
  }
  protected String id() {
   String ids=id;
-  if (id == null)id = ids = m.id(++m.mid, true);
+  if (id == null)id = ids = m.id(++m.mid);
   return ids;
  }
  public Object call() throws Exception {

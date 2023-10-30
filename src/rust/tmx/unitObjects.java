@@ -11,7 +11,6 @@ public class unitObjects {
  public void add(unitDetect de, int def) throws Exception {
   int team=de.team;
   if (team == -3)team = def;
-  if (de.minUnits > 1)throw new IllegalAccessException("minUnits>1");
   add(de.x, de.y, de.team, de.unitType);
  }
  public void add(float x, float y, int team, String type) throws IOException {

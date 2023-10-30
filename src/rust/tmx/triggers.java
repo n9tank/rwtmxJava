@@ -117,7 +117,7 @@ public class triggers {
   arr.clear();
   mbuff.write("</objectgroup>");
  }
- protected String id(int i, boolean igron) {
+ protected String id(int i) {
   StringBuilder buff=warp;
   buff.setLength(0);
   do{
@@ -129,7 +129,7 @@ public class triggers {
    if (mod >= ',')++mod;
    if (mod >= '<')++mod;
    if (mod >= '>')++mod;
-   if (!igron && (mod >= 'a' || mod <= 'z')) {
+   if (mod >= 'a' && mod <= 'z') {
     mod -= 33;
    }
    buff.append(mod);

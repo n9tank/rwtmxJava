@@ -14,6 +14,6 @@ public int team;
   super.before();
   triggers trg=m;
   trg.mbuff.write('>');
-  trg.append("setTeam", team, -3);
+  trg.append("team", team, -3);
  }
 }

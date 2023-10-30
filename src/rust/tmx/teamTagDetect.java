@@ -14,6 +14,6 @@ public class teamTagDetect extends basic {
  }
  protected void before() throws Exception {
   super.before();
-  m.append("teamTag", tag);
+  m.append("teamTag",tag);
  }
 }
