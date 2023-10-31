@@ -15,12 +15,13 @@ public class Mbool {
   m = trg;
   int index=trg.mbool++;
   id = trg.id(index);
-  bool = new teamTagDetect(m, 0, id);
+  teamTagDetect tag = new teamTagDetect(m, 0, id);
+  tag.resetActivationAfter="1s";
+  bool=tag;
  }
  public teamTags set(boolean is) {
   teamTags tag=is ?set: unset;
   if (tag == null) {
-   if(is)bool.resetActivationAfter="1s";
    tag = new teamTags(m, 0);
    tag.resetActivationAfter = "1s";
    if (is) {
