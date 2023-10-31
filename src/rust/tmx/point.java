@@ -47,7 +47,4 @@ public class point{
   buff.write(triggers.floatNum(y));
   buff.write("\"");
  }
- public point asPonit() {
-  return new point(x, y, m);
- }
 }
