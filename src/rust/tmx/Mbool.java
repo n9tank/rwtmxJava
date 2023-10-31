@@ -19,7 +19,7 @@ public class Mbool {
  public teamTags set(boolean is) {
   teamTags tag=is ?set: unset;
   if (tag == null) {
-   if(is)bool.resetActivationAfter="1s";
+   if(is)True().resetActivationAfter="1s";
    tag = new teamTags(m, 0);
    tag.resetActivationAfter = "1s";
    if (is) {
