@@ -26,7 +26,12 @@ public class basic extends set_team implements Callable {
   return null;
  }
  public void append(Madder$findLink find){
-  append(link,find.link);
+  StringBuilder buff=link;
+  unitDetect[] links=find.link;
+  if (buff.length() > 0 || links[1]!= null) {
+   linkAll=true;
+  }
+  append(link, links);
   unitDetect de=find.dlink;
   if(de!=null)append(dlink,de);
  }
