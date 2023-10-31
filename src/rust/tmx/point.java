@@ -2,7 +2,7 @@ package rust.tmx;
 
 import java.io.BufferedWriter;
 
-public class point implements Cloneable {
+public class point{
  protected String id;
  protected triggers m;
  protected float x;
@@ -49,10 +49,5 @@ public class point implements Cloneable {
  }
  public point asPonit() {
   return new point(x, y, m);
- }
- public point clone() throws CloneNotSupportedException {
-  point po=(point)super.clone();
-  m.queue.add(po);
-  return po;
  }
 }
