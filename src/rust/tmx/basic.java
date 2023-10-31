@@ -22,16 +22,19 @@ public class basic extends set_team implements Callable {
  public String getlink(basic ...arg) {
   StringBuilder warp=m.warp2;
   warp.setLength(0);
+  appendLink(warp,arg);
+  warp.setLength(warp.length() - 1);
+  return warp.toString();
+ }
+ public static void appendLink(StringBuilder buff,basic ...arg){
   int size=arg.length;
   while (--size >= 0) {
    basic bs=arg[size];
    if (bs != null) {
-    warp.append(bs.id());
-    warp.append(',');
+    buff.append(bs.id());
+    buff.append(',');
    }
   }
-  warp.setLength(warp.length() - 1);
-  return warp.toString();
  }
  public void msg(String lang, String mes) {
   ArrayList list = msg;
