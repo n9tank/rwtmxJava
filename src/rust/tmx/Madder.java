@@ -137,11 +137,9 @@ public class Madder {
    if (in <= max) {
     if (in < max)link.dlink = de;
     else links[1] = de;
-    FixRest(de);
     de = add[++i];
    }
   }
-  FixRest(de);
   links[0] = de;
   return link;
  }
@@ -149,15 +147,13 @@ public class Madder {
   float w0=w;
   unitDetect de=new unitDetect(x, y, w0, w0, m);
   de.minUnits = min;
+  de.resetActivationAfter="1s";
   if (ax < max)de.maxUnits = ax;
   if (!safe) {
    de.unitType = unit;
    de.team = team;
   }
   return de;
- }
- private void FixRest(unitDetect de){
-  if(!safe||rest!=null)de.resetActivationAfter="1s";
  }
  public unitDetect of(int min, int max) {
   Madder$key key=new Madder$key(min, max);
@@ -167,7 +163,6 @@ public class Madder {
    de = add(min, max);
    table.put(key, de);
   }
-  FixRest(de);
   return de;
  }
 }
