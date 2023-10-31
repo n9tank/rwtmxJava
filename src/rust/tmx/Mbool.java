@@ -16,12 +16,13 @@ public class Mbool {
   int index=trg.mbool++;
   id = trg.id(index);
  }
- public teamTags set(boolean bool) {
-  teamTags tag=bool ?set: unset;
+ public teamTags set(boolean is) {
+  teamTags tag=is ?set: unset;
   if (tag == null) {
+   if(is)bool.resetActivationAfter="1s";
    tag = new teamTags(m, 0);
    tag.resetActivationAfter = "1s";
-   if (bool) {
+   if (is) {
     tag.addTeamTags = id;
     set = tag;
    } else {
@@ -36,7 +37,6 @@ public class Mbool {
   if (tag == null) {
    tag = new teamTagDetect(m, 0, id);
    bool = tag;
-   tag.resetActivationAfter = "1s";
   }
   return tag;
  }
