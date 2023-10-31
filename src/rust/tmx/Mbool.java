@@ -20,6 +20,7 @@ public class Mbool {
   teamTags tag=bool ?set: unset;
   if (tag == null) {
    tag = new teamTags(m, 0);
+   tag.resetActivationAfter = "1s";
    if (bool) {
     tag.addTeamTags = id;
     set = tag;
@@ -35,6 +36,7 @@ public class Mbool {
   if (tag == null) {
    tag = new teamTagDetect(m, 0, id);
    bool = tag;
+   tag.resetActivationAfter = "1s";
   }
   return tag;
  }

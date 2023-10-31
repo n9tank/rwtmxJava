@@ -50,7 +50,6 @@ public class triggers {
  }
  public BufferedWriter mbuff;
  protected int mid;
- protected int[] id;
  protected int mbool;
  protected boolean start;
  protected void append(String key, String value) throws IOException {

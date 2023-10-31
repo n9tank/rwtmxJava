@@ -37,6 +37,7 @@ public class Madder {
    spawnUnit sp=new spawnUnit(unit, i);
    float w0=w / 2;
    add = new unitAdd(x + w0, y + w0, m, team, sp);
+   add.resetActivationAfter = "1s";
    table.put(obj, add);
   }
   return add;
@@ -46,6 +47,7 @@ public class Madder {
   if (re == null) {
    float w0=w;
    rest = re = new unitRemove(x, y, w0, w0, m);
+   re.resetActivationAfter = "1s";
    if (!safe)re.team = team;
   }
   return re;
@@ -74,7 +76,9 @@ public class Madder {
    String type=unit;
    triggers trg=m;
    while (--c >= 0) {
-    add[c] = new unitAdd(x0, y0, trg, te, new spawnUnit(type, fu));
+    unitAdd addn = new unitAdd(x0, y0, trg, te, new spawnUnit(type, fu));
+    addn.resetActivationAfter = "1s";
+    add[c] =addn;
     fu >>= 1;
    }
   }
@@ -130,16 +134,17 @@ public class Madder {
   if (max >= 0 && min < max) {
    if (in <= max) {
     if (in < max)link.dlink = de;
-    else links[1]=de;
+    else links[1] = de;
     de = add[++i];
    }
   }
-  links[0]= de;
+  links[0] = de;
   return link;
  }
  private unitDetect add(int min, int ax) {
   float w0=w;
   unitDetect de=new unitDetect(x, y, w0, w0, m);
+  de.resetActivationAfter = "1s";
   de.minUnits = min;
   if (ax < max)de.maxUnits = ax;
   if (!safe) {
