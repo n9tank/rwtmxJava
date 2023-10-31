@@ -79,7 +79,7 @@ public class Madder {
    while (--c >= 0) {
     unitAdd addn = new unitAdd(x0, y0, trg, te, new spawnUnit(type, fu));
     addn.resetActivationAfter = "1s";
-    add[c] =addn;
+    add[c] = addn;
     fu >>= 1;
    }
   }
@@ -96,6 +96,18 @@ public class Madder {
   }while(i > 0);
   return ru;
  }
+ public unitDetect find(int i) {
+  unitDetect[] add=finds;
+  if (add == null) {
+   int tmp=max;
+   add = new unitDetect[++tmp];
+   finds = add;
+   while(--tmp>=0){
+    add[tmp]=add(tmp,tmp);
+   }
+  }
+  return add[i];
+ }
  public Madder$findLink findLink(int in) {
   unitDetect[] add=finds;
   int tmp=max << 1;
@@ -104,7 +116,7 @@ public class Madder {
    tmp3 = tmp % 3;
    int tmp2 = tmp / 3 + tmp3 == 0 ?1: tmp3;
    add = new unitDetect[tmp2];
-   finds=add;
+   finds = add;
    do{
     int tmp4 = tmp - 1;
     add[--tmp2] = add(tmp4, tmp);
@@ -147,7 +159,7 @@ public class Madder {
   float w0=w;
   unitDetect de=new unitDetect(x, y, w0, w0, m);
   de.minUnits = min;
-  de.resetActivationAfter="1s";
+  de.resetActivationAfter = "1s";
   if (ax < max)de.maxUnits = ax;
   if (!safe) {
    de.unitType = unit;
