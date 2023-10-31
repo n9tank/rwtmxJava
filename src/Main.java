@@ -15,7 +15,7 @@ public class Main {
   bac.msg("","hello_world");*/
   Mbool bool=new Mbool(all);
   bool.set(true);
-  teamTagDetect b2=bool.True();
+  teamTagDetect b2=bool.bool;
   b2.resetActivationAfter="1s";
   basic bac=new basic(0, 0, 0, 0, all);
   bac.msg("","test");

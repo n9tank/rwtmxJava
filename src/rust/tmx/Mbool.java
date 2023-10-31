@@ -8,18 +8,19 @@ import rust.tmx.triggers;
 public class Mbool {
  private teamTags set;
  private teamTags unset;
- private teamTagDetect bool;
+ public teamTagDetect bool;
  private triggers m;
  private String id;
  public Mbool(triggers trg) {
   m = trg;
   int index=trg.mbool++;
   id = trg.id(index);
+  bool = new teamTagDetect(m, 0, id);
  }
  public teamTags set(boolean is) {
   teamTags tag=is ?set: unset;
   if (tag == null) {
-   if(is)True().resetActivationAfter="1s";
+   if(is)bool.resetActivationAfter="1s";
    tag = new teamTags(m, 0);
    tag.resetActivationAfter = "1s";
    if (is) {
@@ -29,14 +30,6 @@ public class Mbool {
     tag.removeTeamTags = id;
     unset = tag;
    }
-  }
-  return tag;
- }
- public teamTagDetect True() {
-  teamTagDetect tag=bool;
-  if (tag == null) {
-   tag = new teamTagDetect(m, 0, id);
-   bool = tag;
   }
   return tag;
  }
