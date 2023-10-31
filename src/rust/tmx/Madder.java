@@ -14,7 +14,8 @@ public class Madder {
  private int team;
  public int max;
  public int addMax;
- private unitAdd[] adds;
+ public unitAdd[] adds;
+ public unitDetect[] finds;
  public Madder(triggers trg) {
   this(trg, trg.getPos(1f, 1f), trg.y, 1f, unitType.other_dummyNonUnitWithTeam, -1);
   safe = true;
@@ -96,13 +97,14 @@ public class Madder {
   return ru;
  }
  public Madder$findLink findLink(int in) {
-  unitDetect[] add=null;
+  unitDetect[] add=finds;
   int tmp=max << 1;
   int tmp3;
   if (add == null) {
    tmp3 = tmp % 3;
    int tmp2 = tmp / 3 + tmp3 == 0 ?1: tmp3;
    add = new unitDetect[tmp2];
+   finds=add;
    do{
     int tmp4 = tmp - 1;
     add[--tmp2] = add(tmp4, tmp);
