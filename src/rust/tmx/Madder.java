@@ -92,7 +92,6 @@ public class Madder {
   return ru;
  }
  public Madder$findLink findLink(int in) {
-  //历遍所有值
   unitDetect[] add=null;
   int tmp=max << 1;
   int tmp3;

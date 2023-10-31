@@ -40,14 +40,13 @@ public class triggers {
   x=x0;
   return x0;
  }
- public triggers(String map_type, Writer out, int minTeam) throws IOException {
+ public triggers(String map_type, Writer out) throws IOException {
   BufferedWriter buff = new BufferedWriter(out);
   mbuff = buff;
   type=map_type;
   warp = new StringBuilder();
   warp2 = new StringBuilder();
   queue = new ArrayList();
-  id = new int[minTeam + 2];
  }
  public BufferedWriter mbuff;
  protected int mid;
