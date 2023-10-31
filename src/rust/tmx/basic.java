@@ -13,33 +13,24 @@ public class basic extends set_team implements Callable {
  public String repeatDelay;
  public boolean showOnMap;
  public final static String msgDelay_slow="slow";
- public String link;
+ public StringBuilder link;
  public boolean linkAll;
- public String alsoLink;
- public String dlink;
- public String getlink(basic ...arg) {
-  StringBuilder warp=m.warp2;
-  warp.setLength(0);
-  appendLink(warp, arg);
-  warp.setLength(warp.length() - 1);
-  return warp.toString();
- }
- public void append(Madder$findLink find) {
-  link = appendLink(link, find.link);
-  dlink = appendLink(dlink, find.dlink);
- }
- public String appendLink(String str, basic ...arg) {
-  StringBuilder warp=m.warp2;
-  warp.setLength(0);
-  if (str != null) {
-   warp.append(str);
-   warp.append(',');
+ public StringBuilder alsoLink;
+ public StringBuilder dlink;
+ protected String endBuff(StringBuilder buff) {
+  int i=buff.length() - 1;
+  if (i >= 0) {
+   buff.setLength(i);
+   return buff.toString();
   }
-  appendLink(warp, arg);
-  warp.setLength(warp.length() - 1);
-  return warp.toString();
+  return null;
  }
- public static void appendLink(StringBuilder buff, basic ...arg) {
+ public void append(Madder$findLink find){
+  append(link,find.link);
+  unitDetect de=find.dlink;
+  if(de!=null)append(dlink,de);
+ }
+ public static void append(StringBuilder buff, basic ...arg) {
   int size=arg.length;
   while (--size >= 0) {
    basic bs=arg[size];
@@ -54,25 +45,30 @@ public class basic extends set_team implements Callable {
   list.add(mes);
   list.add(lang);
  }
- public basic(float x0, float y0, float w0, float h0, point g) {
-  super(x0, y0, w0, h0, g, -3);
+ private void init() {
+  alsoLink = new StringBuilder();
+  link = new StringBuilder();
+  dlink = new StringBuilder();
   msg = new ArrayList();
   unBox = true;
  }
+ public basic(float x0, float y0, float w0, float h0, point g) {
+  super(x0, y0, w0, h0, g, -3);
+  init();
+ }
  public basic(float x0, float y0, float w0, float h0, triggers triggers) {
   super(x0, y0, w0, h0, triggers, -3);
-  msg = new ArrayList();
-  unBox = true;
+  init();
  }
  protected void before() throws Exception {
   super.before();
   triggers triggers=m;
   triggers.append("showOnMap", showOnMap);
   triggers.append("resetActivationAfter", resetActivationAfter);
-  triggers.append("activatedBy", link);
+  triggers.append("activatedBy", endBuff(link));
   triggers.append("allToActivate", linkAll);
-  triggers.append("deactivatedBy", dlink);
-  triggers.append("activateIds", alsoLink);
+  triggers.append("deactivatedBy", endBuff(dlink));
+  triggers.append("activateIds", endBuff(alsoLink));
   triggers.append("debugMessage", debug);
   triggers.append("warmup", warmup);
   triggers.append("delay", delay);
