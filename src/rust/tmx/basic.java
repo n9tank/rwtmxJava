@@ -4,7 +4,7 @@ import java.util.concurrent.Callable;
 import rust.tmx.memory.findLink;
 
 public class basic extends set_team implements Callable {
- private ArrayList msg;
+ public ArrayList msg;
  public String debug;
  public String msgDelay;
  public String msgColor;
@@ -115,5 +115,13 @@ public class basic extends set_team implements Callable {
   ArrayList<String> arr=msg;
   int i=arr.size();
   while (--i >= 0)triggers.append("globalMessage".concat(arr.get(i)), arr.get(--i));
+ }
+ public basic cloneAll() throws CloneNotSupportedException{
+  basic bs=(basic)clone();
+  bs.alsoLink=new StringBuilder(alsoLink);
+  bs.link=new StringBuilder(link);
+  bs.dlink=new StringBuilder(dlink);
+  bs.msg=(ArrayList)msg.clone();
+  return bs;
  }
 }

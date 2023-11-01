@@ -4,11 +4,7 @@ public class teamTags extends basic {
  public String addTeamTags;
  public String removeTeamTags;
  public teamTags(triggers triggers, int team) {
-  super(0f, 0f, 0f, 0f, triggers);
-  this.team = team;
- }
- public teamTags(point g, int team) {
-  super(0f, 0f, 0f, 0f, g);
+  super(triggers);
   this.team = team;
  }
  protected void before() throws Exception {

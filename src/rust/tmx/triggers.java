@@ -1,6 +1,5 @@
 package rust.tmx;
 import java.io.BufferedWriter;
-import java.io.Closeable;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
@@ -23,6 +22,7 @@ public class triggers {
  protected StringBuilder warp;
  protected StringBuilder warp2;
  protected float x=-16777216;
+ //坐标太大，可能会导致游戏崩溃，这里取整数精度范围。
  public float y=-250;
  protected float max;
  public ArrayList queue;
@@ -119,9 +119,8 @@ public class triggers {
   StringBuilder buff=warp;
   buff.setLength(0);
   do{
-   char mod=0;
+   char mod=(char)(i % 90+'!');
    i /= 90;
-   mod += i % 90 + '!';
    if (mod >= '\"')++mod;
    if (mod >= '&')mod += 2;
    if (mod >= ',')++mod;

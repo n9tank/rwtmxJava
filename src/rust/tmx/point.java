@@ -1,10 +1,11 @@
 package rust.tmx;
 
 import java.io.BufferedWriter;
+import java.util.concurrent.Callable;
 
-public class point{
+public class point implements Cloneable {
  protected String id;
- protected triggers m;
+ public triggers m;
  protected float x;
  protected float y;
  public point(float x0, float y0, point g) {
@@ -22,7 +23,8 @@ public class point{
  }
  protected String id() {
   String ids=id;
-  if (id == null)id = ids = m.id(++m.mid);
+  triggers trg=m;
+  if (id == null)id = ids = trg.id(trg.mid++);
   return ids;
  }
  public Object call() throws Exception {
@@ -46,5 +48,12 @@ public class point{
   buff.write("\"y=\"");
   buff.write(triggers.floatNum(y));
   buff.write("\"");
+ }
+ public point clone() throws CloneNotSupportedException {
+  triggers trg=m;
+  point back=(point)super.clone();
+  trg.queue.add(back);
+  back.id=null;
+  return back;
  }
 }
