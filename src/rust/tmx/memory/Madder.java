@@ -1,5 +1,11 @@
-package rust.tmx;
+package rust.tmx.memory;
 import java.util.HashMap;
+import rust.tmx.spawnUnit;
+import rust.tmx.triggers;
+import rust.tmx.unitAdd;
+import rust.tmx.unitDetect;
+import rust.tmx.unitRemove;
+import rust.tmx.unitType;
 
 public class Madder {
  private triggers m;

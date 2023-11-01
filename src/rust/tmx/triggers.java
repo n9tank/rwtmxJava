@@ -50,7 +50,7 @@ public class triggers {
  }
  public BufferedWriter mbuff;
  protected int mid;
- protected int mbool;
+ public int mbool;
  protected boolean start;
  protected void append(String key, String value) throws IOException {
   if (value != null) {
@@ -115,7 +115,7 @@ public class triggers {
   arr.clear();
   mbuff.write("</objectgroup>");
  }
- protected String id(int i) {
+ public String id(int i) {
   StringBuilder buff=warp;
   buff.setLength(0);
   do{

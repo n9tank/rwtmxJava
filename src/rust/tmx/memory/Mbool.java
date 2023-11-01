@@ -1,4 +1,4 @@
-package rust.tmx;
+package rust.tmx.memory;
 
 
 import rust.tmx.teamTagDetect;

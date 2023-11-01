@@ -1,4 +1,4 @@
-package rust.tmx;
+package rust.tmx.memory;
 
 public class Madder$key{
  public int hashCode() {
