@@ -35,38 +35,4 @@ public class Mbool {
   }
   return tag;
  }
- protected Mbool clone() throws CloneNotSupportedException{
-  Mbool bo=new Mbool(m);
-  String nid=bo.id;
-  teamTags se=set;
-  if (se != null) {
-   se=(teamTags) se.clone();
-   se.addTeamTags=nid;
-   bo.set=se;
-  }
-  se= unset;
-  if(se!=null){
-   se=(teamTags) se.clone();
-   se.removeTeamTags=nid;
-   bo.unset=se;
-  }
-  return bo;
- } 
- public Mbool cloneAll() throws CloneNotSupportedException{
-  Mbool bo=new Mbool(m);
-  String nid=bo.id;
-  teamTags se=set;
-  if (se != null) {
-  se=(teamTags) se.cloneAll();
-  se.addTeamTags=nid;
-  bo.set=se;
-  }
-  se= unset;
-  if(se!=null){
-  se=(teamTags) se.cloneAll();
-  se.removeTeamTags=nid;
-  bo.unset=se;
-  }
-  return bo;
- }
 }
