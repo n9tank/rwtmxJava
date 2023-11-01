@@ -44,10 +44,8 @@ public class McheckBox {
   unitAdd add=setTag;
   if (add == null) {
    setTag = add = new unitAdd(x, y, m, team, type);
-   if (!safe) {
-    add.resetActivationAfter = "1s";
-    add.append(add.link, nohasUnit());
-   }
+   add.resetActivationAfter = "1s";
+   if (!safe)add.append(add.link, nohasUnit());
   }
   return add;
  }
@@ -70,10 +68,10 @@ public class McheckBox {
  private unitDetect add() {
   float w0=w;
   unitDetect de = new unitDetect(x, y, w0, w0, m);
+  de.resetActivationAfter = "1s";
   if (!safe) {
    de.team = team;
    de.unitType = type.type;
-   de.resetActivationAfter = "1s";
   }
   return de;
  }
@@ -84,7 +82,7 @@ public class McheckBox {
    float w0=w;
    remove = add = new unitRemove(x, y, w0, w0, m);
    add.resetActivationAfter = "1s";
-   add.team = team;
+   if(!safe)add.team = team;
   }
   return add;
  }
