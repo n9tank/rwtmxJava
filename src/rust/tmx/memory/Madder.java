@@ -38,7 +38,7 @@ public class Madder {
   team = t;
  }
  public unitAdd add(int i) {
-  if(adds!=null)throw new RuntimeException("add():addLink()");
+  if(i<=max&&adds!=null)throw new RuntimeException("add():addLink()");
   Integer obj= Integer.valueOf(i);
   HashMap<Integer, unitAdd> table=map;
   unitAdd add=table.get(obj);
