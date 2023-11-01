@@ -23,7 +23,7 @@ public class triggers {
  protected StringBuilder warp;
  protected StringBuilder warp2;
  protected float x=-16777216;
- protected float y=-250;
+ public float y=-250;
  protected float max;
  public ArrayList queue;
  public float getPos(float w, float h) {

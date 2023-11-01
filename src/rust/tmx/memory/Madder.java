@@ -24,7 +24,7 @@ public class Madder {
  public unitDetect[] finds;
  protected boolean findlink;
  public Madder(triggers trg) {
-  this(trg, trg.getPos(1f, 1f), trg.y, 1f, unitType.other_dummyNonUnitWithTeam, -1);
+  this(trg, trg.getPos(1f, 1f), trg.y, 1f, unitType.other_dummyNonUnitWithTeam,0);
   safe = true;
  }
  public Madder(triggers trg, float x0, float y0, float w0, String type, int t) {
