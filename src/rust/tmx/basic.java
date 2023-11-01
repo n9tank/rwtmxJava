@@ -1,6 +1,7 @@
 package rust.tmx;
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
+import rust.tmx.memory.Madder$findLink;
 
 public class basic extends set_team implements Callable {
  private ArrayList msg;
@@ -29,9 +30,9 @@ public class basic extends set_team implements Callable {
   StringBuilder buff=link;
   unitDetect link2=find.link2;
   if (buff.length() > 0 || link2 != null)linkAll = true;
-  append(link,find.link);
+  append(link, find.link);
   append(link, link2);
-  append(dlink,find.dlink);
+  append(dlink, find.dlink);
  }
  public static void append(StringBuilder buff, basic bs) {
   if (bs != null) {
@@ -57,6 +58,9 @@ public class basic extends set_team implements Callable {
   dlink = new StringBuilder();
   msg = new ArrayList();
   unBox = true;
+ }
+ public basic(triggers trg) {
+  super(0f, 0f, 0f, 0f, trg, -3);
  }
  public basic(float x0, float y0, float w0, float h0, point g) {
   super(x0, y0, w0, h0, g, -3);
