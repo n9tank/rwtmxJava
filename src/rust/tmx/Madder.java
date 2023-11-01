@@ -155,11 +155,7 @@ public class Madder {
    ru = add[i];
    int mx=ru.maxUnits;
    if (mx > 0 || (mx == 0 && tmp > 0)) {
-    if (max < mx) {
-     ++i;
-    } else if (max > mx) {
-     --i;
-    }
+    i+=max-mx;
     ru = add[i];
    }
   } else ru = of(min, max);
