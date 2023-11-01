@@ -16,7 +16,7 @@ public class spawnUnit {
  public float offsetRandomY;
  public float offsetHeight;
  public float offsetDir;
- protected String type;
+ public String type;
  protected int num;
  public spawnUnit(String unit, int n) {
   type = unit;

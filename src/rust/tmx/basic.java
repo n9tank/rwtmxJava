@@ -1,7 +1,7 @@
 package rust.tmx;
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
-import rust.tmx.memory.Madder$findLink;
+import rust.tmx.memory.findLink;
 
 public class basic extends set_team implements Callable {
  private ArrayList msg;
@@ -26,13 +26,42 @@ public class basic extends set_team implements Callable {
   }
   return null;
  }
- public void append(Madder$findLink find) {
+ public void link(findLink find) {
+  linkAnd(find.link);
+  linkAnd(find.link2);
+  dlink(find.dlink);
+  dlink(find.dlink2);
+ }
+ public void linkAnd(basic bs) {
   StringBuilder buff=link;
-  unitDetect link2=find.link2;
-  if (buff.length() > 0 || link2 != null)linkAll = true;
-  append(link, find.link);
-  append(link, link2);
-  append(dlink, find.dlink);
+  boolean is=linkAll;
+  if (buff.length() == 0)linkAll = is = true;
+  if (!is)throw new RuntimeException("linkAnd():linkAll=false");
+  append(buff, bs);
+ }
+ public void linkAnd(basic ...arg) {
+  int size=arg.length;
+  while (--size >= 0) {
+   linkAnd(arg[size]);
+  }
+ }
+ public void linkOr(basic bs) {
+  if (linkAll)throw new RuntimeException("linkOr():linkAll=true");
+  append(link, bs);
+ }
+ public void linkOr(basic ...arg) {
+  if (linkAll)throw new RuntimeException("linkOr():linkAll=true");
+  append(link, arg);
+ }
+ public void dlink(basic bs) {
+  if (bs != null) {
+   resetActivationAfter = null;
+   append(dlink, bs);
+  }
+ }
+ public void dlink(basic ...bs) {
+  resetActivationAfter = null;
+  append(dlink, bs);
  }
  public static void append(StringBuilder buff, basic bs) {
   if (bs != null) {

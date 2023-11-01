@@ -22,7 +22,7 @@ public class Madder {
  public int addMax;
  public unitAdd[] adds;
  public unitDetect[] finds;
- protected boolean findlink;
+ protected byte findlink;
  public Madder(triggers trg) {
   this(trg, trg.getPos(1f, 1f), trg.y, 1f, unitType.other_dummyNonUnitWithTeam,0);
   safe = true;
@@ -38,6 +38,7 @@ public class Madder {
   team = t;
  }
  public unitAdd add(int i) {
+  if(adds!=null)throw new RuntimeException("add():addLink()");
   Integer obj= Integer.valueOf(i);
   HashMap<Integer, unitAdd> table=map;
   unitAdd add=table.get(obj);
@@ -71,6 +72,7 @@ public class Madder {
   return c;
  }
  public unitAdd[] addLink(int i) {
+  if(map.size()>0)throw new RuntimeException("addLink():add()");
   unitAdd[] add=adds;
   int tmp=addMax;
   if (add == null) {
@@ -104,6 +106,8 @@ public class Madder {
   return ru;
  }
  public unitDetect find(int i) {
+  if(findlink>0)throw new RuntimeException("find():initLink()");
+  findlink=-1;
   unitDetect[] add=finds;
   if (add == null) {
    int tmp=max;
@@ -116,11 +120,13 @@ public class Madder {
   return add[i];
  }
  private int initLink() {
-  findlink = true;
+  if(findlink<0)throw new RuntimeException("initLink():find()");
+  findlink=1;
   unitDetect[] add=finds;
   int tmp=max << 1;
   int tmp3=tmp % 3;
   if (add == null) {
+   if(eqz.size()>0)throw new RuntimeException("initLink():of()");
    int tmp2 = tmp / 3 + tmp3 == 0 ?1: tmp3;
    add = new unitDetect[tmp2];
    finds = add;
@@ -164,14 +170,14 @@ public class Madder {
     i+=max-mx;
     ru = add[i];
    }
-  } else ru = of(min, max);
+  } else ru = ofN(min, max);
   return ru;
  }
- public Madder$findLink findLink(int in) {
+ public findLink findLink(int in) {
   int tmp=initLink();
   int i=getOf(tmp, in);
   unitDetect[] add=finds;
-  Madder$findLink link= new Madder$findLink();
+  findLink link= new findLink();
   unitDetect de=add[i];
   int max=de.maxUnits;
   if (max > 0 || (max == 0 && tmp > 0)) {
@@ -204,7 +210,11 @@ public class Madder {
   }
   return de;
  }
- public unitDetect of(int min, int max) {
+ public unitDetect of(int min,int max){
+  if(finds!=null)throw new RuntimeException("of():initLink()");
+  return ofN(min,max);
+ }
+ private unitDetect ofN(int min, int max) {
   Madder$key key=new Madder$key(min, max);
   HashMap<Madder$key, unitDetect> table=eqz;
   unitDetect de=table.get(key);
