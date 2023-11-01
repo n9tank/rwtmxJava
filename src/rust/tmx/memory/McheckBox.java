@@ -78,7 +78,7 @@ public class McheckBox {
   return de;
  }
  public unitRemove remove() {
-  if (safe)throw new RuntimeException("safe=true");
+  if (y>=0&&safe)throw new RuntimeException("safe=true");
   unitRemove add=remove;
   if (add == null) {
    float w0=w;
