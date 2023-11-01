@@ -53,7 +53,9 @@ public class McheckBox {
   unitDetect de=isFalse;
   if (de == null) {
    isFalse = de = add();
-   de.onlyIdle = true;
+   if(y>=0){
+    de.onlyIdle = true;
+   }
   }
   return de;
  }
@@ -82,7 +84,7 @@ public class McheckBox {
    float w0=w;
    remove = add = new unitRemove(x, y, w0, w0, m);
    add.resetActivationAfter = "1s";
-   if(!safe)add.team = team;
+   if (!safe)add.team = team;
   }
   return add;
  }
