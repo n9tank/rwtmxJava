@@ -4,7 +4,7 @@ package rust.tmx;
 
 public class unitAdd extends basic {
  public final int safe_off=300;
- private spawnUnit[] spawnUnit;
+ public spawnUnit[] spawnUnit;
  public void fixPool() {
   spawnUnit[] args=spawnUnit;
   int len=args.length,i=len;
