@@ -160,8 +160,8 @@ public class Madder {
  }
  public unitDetect ofLink(int min, int max) {
   unitDetect ru;
+  int tmp=initLink();
   if (max - min == 1) {
-   int tmp=initLink();
    int i=getOf(tmp, min);
    unitDetect add[]=finds;
    ru = add[i];
