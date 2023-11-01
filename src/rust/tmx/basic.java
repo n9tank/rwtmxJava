@@ -30,7 +30,6 @@ public class basic extends set_team implements Callable {
   linkAnd(find.link);
   linkAnd(find.link2);
   dlink(find.dlink);
-  dlink(find.dlink2);
  }
  public void linkAnd(basic bs) {
   StringBuilder buff=link;
