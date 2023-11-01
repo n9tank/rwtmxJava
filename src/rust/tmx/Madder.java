@@ -16,6 +16,7 @@ public class Madder {
  public int addMax;
  public unitAdd[] adds;
  public unitDetect[] finds;
+ protected boolean findlink;
  public Madder(triggers trg) {
   this(trg, trg.getPos(1f, 1f), trg.y, 1f, unitType.other_dummyNonUnitWithTeam, -1);
   safe = true;
@@ -102,18 +103,18 @@ public class Madder {
    int tmp=max;
    add = new unitDetect[++tmp];
    finds = add;
-   while(--tmp>=0){
-    add[tmp]=add(tmp,tmp);
+   while (--tmp >= 0) {
+    add[tmp] = add(tmp, tmp);
    }
   }
   return add[i];
  }
- public Madder$findLink findLink(int in) {
+ private int initLink() {
+  findlink = true;
   unitDetect[] add=finds;
   int tmp=max << 1;
-  int tmp3;
+  int tmp3=tmp % 3;
   if (add == null) {
-   tmp3 = tmp % 3;
    int tmp2 = tmp / 3 + tmp3 == 0 ?1: tmp3;
    add = new unitDetect[tmp2];
    finds = add;
@@ -128,9 +129,12 @@ public class Madder {
    if (tmp2 == 0) {
     add[--tmp2] = add(0, 0);
    }
-  } else tmp3 = tmp % 3;
+  }
   if (tmp3 == 2)tmp3 = 0;
   else if (tmp3 == 0)tmp3 = -1;
+  return tmp3;
+ }
+ private int getOf(int tmp3, int in) {
   int i = in + tmp3;
   tag: {
    if (i < 0 || (w == 0 && tmp3 >= 0)) {
@@ -140,19 +144,50 @@ public class Madder {
    i = (i << 1) / 3;
    if (tmp3 < 0)++i;
   }
+  return i;
+ }
+ public unitDetect ofLink(int min, int max) {
+  unitDetect ru;
+  if (max - min == 1) {
+   int tmp=initLink();
+   int i=getOf(tmp, min);
+   unitDetect add[]=finds;
+   ru = add[i];
+   int mx=ru.maxUnits;
+   if (mx > 0 || (mx == 0 && tmp > 0)) {
+    if (max < mx) {
+     ++i;
+    } else if (max > mx) {
+     --i;
+    }
+    ru = add[i];
+   }
+  } else ru = of(min, max);
+  return ru;
+ }
+ public Madder$findLink findLink(int in) {
+  int tmp=initLink();
+  int i=getOf(tmp, in);
+  unitDetect[] add=finds;
   Madder$findLink link= new Madder$findLink();
-  unitDetect[] links=new unitDetect[2];
   unitDetect de=add[i];
   int max=de.maxUnits;
-  int min=de.minUnits;
-  if (max >= 0 && min < max) {
-   if (in <= max) {
-    if (in < max)link.dlink = de;
-    else links[1] = de;
-    de = add[++i];
+  if (max > 0 || (max == 0 && tmp > 0)) {
+   int n=i;
+   if (tmp < 0)n += tmp;
+   boolean eqz;
+   if ((n & 1) == 0) {
+    ++i;
+    eqz = in == max;
+   } else {
+    --i;
+    eqz = in < max;
    }
+   if (eqz)link.link2 = de;
+   else link.dlink = de;
+   de = add[i];
   }
-  links[0] = de;
+  link.link = de;
   return link;
  }
  private unitDetect add(int min, int ax) {

@@ -25,24 +25,25 @@ public class basic extends set_team implements Callable {
   }
   return null;
  }
- public void append(Madder$findLink find){
+ public void append(Madder$findLink find) {
   StringBuilder buff=link;
-  unitDetect[] links=find.link;
-  if (buff.length() > 0 || links[1]!= null) {
-   linkAll=true;
+  unitDetect link2=find.link2;
+  if (buff.length() > 0 || link2 != null)linkAll = true;
+  append(link,find.link);
+  append(link, link2);
+  append(dlink,find.dlink);
+ }
+ public static void append(StringBuilder buff, basic bs) {
+  if (bs != null) {
+   buff.append(bs.id());
+   buff.append(',');
   }
-  append(link, links);
-  unitDetect de=find.dlink;
-  if(de!=null)append(dlink,de);
  }
  public static void append(StringBuilder buff, basic ...arg) {
   int size=arg.length;
   while (--size >= 0) {
    basic bs=arg[size];
-   if (bs != null) {
-    buff.append(bs.id());
-    buff.append(',');
-   }
+   append(buff, bs);
   }
  }
  public void msg(String lang, String mes) {

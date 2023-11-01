@@ -20,8 +20,8 @@ public class Main {
   basic bac=new basic(0, 0, 0, 0, all);
   bac.msg("","test");
   bac.resetActivationAfter="1s";
+  bac.
   all.finsh();
   all.mbuff.flush();
-  System.out.println();
  }
 }

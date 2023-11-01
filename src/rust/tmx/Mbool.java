@@ -14,9 +14,10 @@ public class Mbool {
  public Mbool(triggers trg) {
   m = trg;
   int index=trg.mbool++;
-  id = trg.id(index);
-  teamTagDetect tag = new teamTagDetect(m, 0, id);
-  tag.resetActivationAfter="1s";
+  String str= trg.id(index);
+  id=str;
+  teamTagDetect tag = new teamTagDetect(m, 0, str);
+  tag.resetActivationAfter = "1s";
   bool=tag;
  }
  public teamTags set(boolean is) {
