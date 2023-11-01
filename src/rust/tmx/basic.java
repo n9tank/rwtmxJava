@@ -60,7 +60,7 @@ public class basic extends set_team implements Callable {
   unBox = true;
  }
  public basic(triggers trg) {
-  super(0f, 0f, 0f, 0f, trg, -3);
+  this(0f, 0f, 0f, 0f, trg);
  }
  public basic(float x0, float y0, float w0, float h0, point g) {
   super(x0, y0, w0, h0, g, -3);
