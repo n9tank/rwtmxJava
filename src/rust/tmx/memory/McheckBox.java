@@ -46,7 +46,7 @@ public class McheckBox {
    float w0=w * 0.5f;
    setTag = add = new unitAdd(x + w0, y + w0, m, team, type);
    add.resetActivationAfter = "1s";
-   if (!safe)add.append(add.link, nohasUnit());
+   if (!safe)add.linkOr(nohasUnit());
   }
   return add;
  }
