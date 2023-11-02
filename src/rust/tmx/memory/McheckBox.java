@@ -43,7 +43,8 @@ public class McheckBox {
  public unitAdd set() {
   unitAdd add=setTag;
   if (add == null) {
-   setTag = add = new unitAdd(x, y, m, team, type);
+   float w0=w * 0.5f;
+   setTag = add = new unitAdd(x + w0, y + w0, m, team, type);
    add.resetActivationAfter = "1s";
    if (!safe)add.append(add.link, nohasUnit());
   }
@@ -53,7 +54,7 @@ public class McheckBox {
   unitDetect de=isFalse;
   if (de == null) {
    isFalse = de = add();
-   if(y>=0){
+   if (y >= 0) {
     de.onlyIdle = true;
    }
   }
@@ -78,7 +79,6 @@ public class McheckBox {
   return de;
  }
  public unitRemove remove() {
-  if (y>=0&&safe)throw new RuntimeException("safe=true");
   unitRemove add=remove;
   if (add == null) {
    float w0=w;

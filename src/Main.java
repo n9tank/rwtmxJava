@@ -2,18 +2,19 @@
 import java.io.OutputStreamWriter;
 import rust.tmx.*;
 import rust.tmx.memory.banUnit;
+import rust.tmx.memory.Mswitch;
+import java.io.FileWriter;
 public class Main {
  public static void main(String ...arg) throws Exception {
-  triggers all=new triggers(triggers.map_, new OutputStreamWriter(System.out));
-  /*banUnit ban=new banUnit(all, 0);
-  ban.add(unitType.air_airShip);
-  ban.clone(1);*/
-  basic bs=new basic(all);
-  bs.debug="hello";
-  bs.linkOr(bs);
-  basic b2=(basic)bs.cloneAll();
-  b2.linkOr(b2);
-  b2.call();
+  FileWriter out=new FileWriter("sdcard/a.txt");
+  triggers all=new triggers(triggers.map_,out);
+  Mswitch sw=new Mswitch(all,0, 20, 0, 2);
+  sw.center=true;
+  sw.set(null);
+  sw.add("a");
+  sw.add("b");
+  all.finsh();
   all.mbuff.flush();
+  System.out.println();
  }
 }

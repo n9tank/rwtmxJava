@@ -95,6 +95,7 @@ public class unitAdd extends basic {
     add("skipIfOverlapping", unit.skipIfOverlapping);
     end();
    }while(++i < len);
+   buff.setLength(buff.length() - 1);
    trg.append("spawnUnits", buff.toString());
   }
  }

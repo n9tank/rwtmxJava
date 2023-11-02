@@ -3,7 +3,7 @@ package rust.tmx;
 import java.util.concurrent.Callable;
 import java.io.IOException;
 
-public class team_info extends point implements Callable {
+public class team_info extends point implements Cloneable,Callable {
  private int t;
  private triggers m;
  public int credits;
@@ -33,5 +33,8 @@ public class team_info extends point implements Callable {
   trg.append("shareFogWithAllies",shareFog);
   trg.append("lockAiDifficulty",ai,0);
   if(aiAttack)trg.append("ai","survival");
+ }
+ public team_info clone() throws CloneNotSupportedException{
+ return (team_info)super.clone();
  }
 }

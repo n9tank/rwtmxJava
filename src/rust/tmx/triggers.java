@@ -26,6 +26,7 @@ public class triggers {
  public float y=-250;
  protected float max;
  public ArrayList queue;
+ public boolean game_banNuke;
  public float getPos(float w, float h) {
   float x0=x;
   float ma=max;
