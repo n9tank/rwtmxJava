@@ -29,7 +29,7 @@ public class basic extends set_team implements Callable {
  public void link(findLink find) {
   linkAnd(find.link);
   linkAnd(find.link2);
-  dlink(find.dlink);
+  append(dlink,find.dlink);
  }
  public void linkAnd(basic bs) {
   StringBuilder buff=link;
@@ -51,7 +51,7 @@ public class basic extends set_team implements Callable {
  public void linkOr(basic ...arg) {
   if (linkAll)throw new RuntimeException("linkOr():linkAll=true");
   append(link, arg);
- }
+ }/*
  public void dlink(basic bs) {
   if (bs != null) {
    resetActivationAfter = null;
@@ -61,7 +61,7 @@ public class basic extends set_team implements Callable {
  public void dlink(basic ...bs) {
   resetActivationAfter = null;
   append(dlink, bs);
- }
+ }*/
  public static void append(StringBuilder buff, basic bs) {
   if (bs != null) {
    buff.append(bs.id());
