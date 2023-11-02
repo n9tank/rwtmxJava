@@ -11,8 +11,8 @@ public class Main {
   Mswitch sw=new Mswitch(all,0, 20, 0, 2);
   sw.center=true;
   sw.set(null);
-  sw.add("a");
-  sw.add("b");
+  sw.addNot("a");
+  sw.addNot("b");
   all.finsh();
   all.mbuff.flush();
   System.out.println();
