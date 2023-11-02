@@ -44,7 +44,7 @@ public class Madder {
   unitAdd add=table.get(obj);
   if (add == null) {
    spawnUnit sp=new spawnUnit(unit, i);
-   float w0=w / 2;
+   float w0=w *0.5f;
    add = new unitAdd(x + w0, y + w0, m, team, sp);
    add.resetActivationAfter = "1s";
    table.put(obj, add);
@@ -80,8 +80,9 @@ public class Madder {
    int fu=1 << c;
    add = new unitAdd[c];
    adds = add;
-   float x0=x;
-   float y0=y;
+   float w0=w*0.5f;
+   float x0=x+w0;
+   float y0=y+w0;
    int te=team;
    String type=unit;
    triggers trg=m;
