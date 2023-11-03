@@ -2,8 +2,11 @@ package rust.tmx.memory;
 import rust.tmx.triggers;
 import rust.tmx.unitDetect;
 import rust.tmx.unitType;
+import rust.tmx.unitAdd;
+import rust.tmx.spawnUnit;
+import rust.tmx.basic;
 
-public class McheckBox extends  MunitBox {
+public class McheckBox extends  MunitLogic {
  private unitDetect isTrue;
  private unitDetect isFalse;
  public McheckBox(float x0, float y0, int t, triggers trg) {
@@ -14,27 +17,16 @@ public class McheckBox extends  MunitBox {
   super(x0, y0, w0, w0, t, type, trg);
   keep = true;
  }
- public unitDetect True() {
-  unitDetect de=isTrue;
-  if (de == null) {
-   isTrue = de = detect();
+ public unitAdd set() {
+  spawnUnit add=unit(1);
+  if (safe)add.offsetHeight = -8;
+  return set(add);
+ }
+ protected void doTrue(unitDetect de) {
    de.onlyIdle = true;
    de.maxUnits = 0;
-  }
-  return de;
  }
- public unitDetect False() {
-  unitDetect de=isFalse;
-  if (de == null) {
-   isFalse = de = detect();
+ protected void doFalse(unitDetect de) {
    de.onlyIdle = true;
-  }
-  return de;
- }
- public void apply() {
-  triggers trg=m;
-  trg.apply(isTrue);
-  trg.apply(isFalse);
-  super.apply();
  }
 }
