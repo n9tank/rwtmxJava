@@ -18,12 +18,9 @@ public class McheckBox extends  MunitLogic {
  public unitAdd set() {
   spawnUnit add=unit(1);
   if (safe)add.offsetHeight = -8;
-  return set(x,y,add);
+  return set(x, y, add);
  }
- protected void doTrue(unitDetect de) {
-   de.onlyIdle = true;
- }
- protected void doFalse(unitDetect de) {
-   de.onlyIdle = true;
+ protected void dosome(unitDetect de) {
+  de.onlyIdle = true;
  }
 }
