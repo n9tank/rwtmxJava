@@ -45,8 +45,7 @@ public class Mbuy extends MunitLogic {
   return chs;
  }
  public void sing(int i) {
-  McheckBox checkbox=new McheckBox(x + (w * 0.5f), y + h, team, m);
-  checkbox.nofix = true;
+  McheckBox checkbox=new McheckBox(x + (w * 0.5f)-7, y + h, team, m);
   checkbox.hasUnit().warmup = "1s";
   unitAdd add=checkbox.set();
   linkAnd(add);
