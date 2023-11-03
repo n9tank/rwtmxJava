@@ -3,23 +3,21 @@ package rust.tmx;
 import java.io.BufferedWriter;
 import java.util.concurrent.Callable;
 
-public class point implements Cloneable {
+public class point implements Cloneable,Callable {
  protected String id;
- public triggers m;
+ public final triggers m;
  protected float x;
  protected float y;
+ protected void apply(){
+  m.add(this);
+ }
  public point(float x0, float y0, point g) {
-  x = g.x + x0;
-  y = g.y + y0;
-  triggers trg = g.m;
-  m = trg;
-  trg.queue.add(this);
+  this(g.x + x0, g.y + y0, g.m);
  }
  public point(float x0, float y0, triggers triggers) {
   x = x0;
   y = y0;
   m = triggers;
-  triggers.queue.add(this);
  }
  protected String id() {
   String ids=id;
@@ -53,7 +51,7 @@ public class point implements Cloneable {
   triggers trg=m;
   point back=(point)super.clone();
   trg.queue.add(back);
-  back.id=null;
+  back.id = null;
   return back;
  }
 }

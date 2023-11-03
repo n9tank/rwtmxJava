@@ -4,6 +4,7 @@ import rust.tmx.triggers;
 import rust.tmx.unitAdd;
 import rust.tmx.unitDetect;
 import rust.tmx.unitType;
+import java.util.Iterator;
 
 public class Madder extends MunitBox {
  private HashMap<Integer,unitAdd> map;
@@ -183,5 +184,29 @@ public class Madder extends MunitBox {
    table.put(key, de);
   }
   return de;
+ }
+ public void apply() {
+  triggers trg=m;
+  unitAdd[] add=adds;
+  if(add!=null){
+   int i=add.length;
+   while(--i>=0)trg.apply(add[i]);
+  }
+  Iterator ite=map.values().iterator();
+  while(ite.hasNext()){
+   unitAdd ad=(unitAdd)ite.next();
+   trg.apply(ad);
+  }
+  trg.apply(remove);
+  unitDetect[] find=finds;
+  if (find != null) {
+   int i=find.length;
+   while(--i>=0)trg.apply(find[i]);
+  }
+  ite=eqz.values().iterator();
+  while(ite.hasNext()){
+   unitDetect ad=(unitDetect)ite.next();
+   trg.apply(ad);
+  }
  }
 }

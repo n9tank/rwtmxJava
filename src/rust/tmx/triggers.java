@@ -40,6 +40,12 @@ public class triggers {
   x=x0;
   return x0;
  }
+ protected void add(Callable back){
+  queue.add(back);
+ }
+ public void apply(basic back){
+  if(back!=null)add(back);
+ }
  public triggers(String map_type, Writer out) throws IOException {
   BufferedWriter buff = new BufferedWriter(out);
   mbuff = buff;
@@ -110,8 +116,8 @@ public class triggers {
   append("survivalWaves", waves);
   endObj();
   ArrayList<Callable> arr=queue;
-  int size=arr.size();
-  while (--size >= 0)arr.get(size).call();
+  int size=arr.size(),i=0;
+  while (i<size)arr.get(i++).call();
   arr.clear();
   mbuff.write("</objectgroup>");
  }

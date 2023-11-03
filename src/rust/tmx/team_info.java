@@ -22,6 +22,7 @@ public class team_info extends point implements Cloneable,Callable {
  public team_info(int id,triggers trg) {
   super(0,0,trg);
   t=id;
+  trg.add(this);
  }
  protected void before() throws Exception {
   super.before();

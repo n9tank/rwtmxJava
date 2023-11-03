@@ -29,7 +29,7 @@ public class basic extends set_team implements Callable {
  public void link(findLink find) {
   linkAnd(find.link);
   linkAnd(find.link2);
-  append(dlink,find.dlink);
+  append(dlink, find.dlink);
  }
  public void linkAnd(basic bs) {
   StringBuilder buff=link;
@@ -51,17 +51,7 @@ public class basic extends set_team implements Callable {
  public void linkOr(basic ...arg) {
   if (linkAll)throw new RuntimeException("linkOr():linkAll=true");
   append(link, arg);
- }/*
- public void dlink(basic bs) {
-  if (bs != null) {
-   resetActivationAfter = null;
-   append(dlink, bs);
-  }
  }
- public void dlink(basic ...bs) {
-  resetActivationAfter = null;
-  append(dlink, bs);
- }*/
  public static void append(StringBuilder buff, basic bs) {
   if (bs != null) {
    buff.append(bs.id());
@@ -87,6 +77,7 @@ public class basic extends set_team implements Callable {
   msg = new ArrayList();
   unBox = true;
  }
+ protected void apply(){}
  public basic(triggers trg) {
   this(0f, 0f, 0f, 0f, trg);
  }
@@ -103,8 +94,11 @@ public class basic extends set_team implements Callable {
   triggers triggers=m;
   triggers.append("showOnMap", showOnMap);
   triggers.append("resetActivationAfter", resetActivationAfter);
-  triggers.append("activatedBy", endBuff(link));
-  triggers.append("allToActivate", linkAll);
+  String str=endBuff(link);
+  if (str != null) {
+   triggers.append("activatedBy", str);
+   if (str.indexOf(',') >= 0)triggers.append("allToActivate", linkAll);
+  }
   triggers.append("deactivatedBy", endBuff(dlink));
   triggers.append("activateIds", endBuff(alsoLink));
   triggers.append("debugMessage", debug);
@@ -116,12 +110,12 @@ public class basic extends set_team implements Callable {
   int i=arr.size();
   while (--i >= 0)triggers.append("globalMessage".concat(arr.get(i)), arr.get(--i));
  }
- public basic cloneAll() throws CloneNotSupportedException{
+ public basic cloneAll() throws CloneNotSupportedException {
   basic bs=(basic)clone();
-  bs.alsoLink=new StringBuilder(alsoLink);
-  bs.link=new StringBuilder(link);
-  bs.dlink=new StringBuilder(dlink);
-  bs.msg=(ArrayList)msg.clone();
+  bs.alsoLink = new StringBuilder(alsoLink);
+  bs.link = new StringBuilder(link);
+  bs.dlink = new StringBuilder(dlink);
+  bs.msg = (ArrayList)msg.clone();
   return bs;
  }
 }

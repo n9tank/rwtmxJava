@@ -4,6 +4,7 @@ package rust.tmx.memory;
 import rust.tmx.teamTagDetect;
 import rust.tmx.teamTags;
 import rust.tmx.triggers;
+import java.util.ArrayList;
 
 public class Mbool {
  private teamTags set;
@@ -34,5 +35,11 @@ public class Mbool {
    }
   }
   return tag;
+ }
+ public void apply(){
+  triggers trg=m;
+  trg.apply(bool);
+  trg.apply(set);
+  trg.apply(unset);
  }
 }
