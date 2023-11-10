@@ -11,13 +11,11 @@ public class unitAdd extends basic {
   float all=0;
   while (--i >= 0)all += args[i].spawnChance;
   i = 0;
-  float tmp=all;
   do{
    spawnUnit sp=args[i];
    float w=sp.spawnChance;
-   float in= w / all;
-   sp.spawnChance = tmp * in;
-   tmp -= w;
+   sp.spawnChance = w / all;
+   all -= w;
   }while(++i < len);
  }
  public unitAdd(float x0, float y0, triggers triggers, int team, spawnUnit ...add) {
@@ -60,6 +58,7 @@ public class unitAdd extends basic {
    buff.append(')');
   }
   buff.append(',');
+  start = false;
  }
  protected void before() throws Exception {
   super.before();
@@ -81,8 +80,9 @@ public class unitAdd extends basic {
     add("falling", unit.falling);
     add("gridAlign", unit.gridAlign);
     add("techLevel", unit.techLevel);
-    add("spawnChance", unit.spawnChance);
-    add("maxSpawnLimit", unit.maxSpawnLimit);
+    float sp=unit.spawnChance;
+    if(sp!=1f)add("spawnChance",sp);
+    if (i > 0 || cou > 1)add("maxSpawnLimit", unit.maxSpawnLimit);
     add("neutralTeam", unit.neutralTeam);
     add("aggressiveTeam", unit.aggressiveTeam);
     add("offsetDir", unit.offsetDir);

@@ -22,4 +22,9 @@ public class spawnUnit {
   type = unit;
   num = n;
  }
+ public spawnUnit(String str, float f) {
+  this(str, 1);
+  spawnChance = f;
+  maxSpawnLimit = 1;
+ }
 }
