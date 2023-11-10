@@ -39,6 +39,7 @@ public class unitType {
  public static final String air_gunShip="gunShip";
  public static final String air_heavyInterceptor="heavyInterceptor";
  public static final String air_spyDrone="spyDrone";
+ public static final String air_c_amphibiousJet="c_amphibiousJet";
  public static final String air_c_amphibiousJet_transition="c_amphibiousJet_transition";
  public static final String air_c_amphibiousJet_underwater="c_amphibiousJet_underwater";
  public static final String air_amphibiousJet="amphibiousJet";
