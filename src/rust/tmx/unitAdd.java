@@ -58,7 +58,7 @@ public class unitAdd extends basic {
    buff.append(')');
   }
   buff.append(',');
-  start = false;
+  start=false;
  }
  protected void before() throws Exception {
   super.before();

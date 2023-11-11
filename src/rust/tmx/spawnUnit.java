@@ -3,7 +3,7 @@ package rust.tmx;
 public class spawnUnit {
  public boolean aggressiveTeam;
  public boolean neutralTeam;
- public float spawnChance;
+ public float spawnChance=1.0f;
  public int maxSpawnLimit;
  public int techLevel;
  public boolean gridAlign;
