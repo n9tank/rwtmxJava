@@ -58,7 +58,7 @@ public class unitAdd extends basic {
    buff.append(')');
   }
   buff.append(',');
-  start=false;
+  start = false;
  }
  protected void before() throws Exception {
   super.before();
@@ -81,7 +81,7 @@ public class unitAdd extends basic {
     add("gridAlign", unit.gridAlign);
     add("techLevel", unit.techLevel);
     float sp=unit.spawnChance;
-    if(sp!=1f)add("spawnChance",sp);
+    if (sp != 1f)add("spawnChance", triggers.floatNum(sp));
     if (i > 0 || cou > 1)add("maxSpawnLimit", unit.maxSpawnLimit);
     add("neutralTeam", unit.neutralTeam);
     add("aggressiveTeam", unit.aggressiveTeam);
