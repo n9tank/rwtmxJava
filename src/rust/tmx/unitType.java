@@ -46,6 +46,7 @@ public class unitType {
  public static final String air_bomber="bomber";
  public static final String air_missileAirship="missileAirship";
  public static final String air_aaBeamGunship="aaBeamGunship";
+ public static final String air_aaBeamGunship_afterburn="aaBeamGunship_afterburn";
  public static final String air_mechFlyingTakeoff="mechFlyingTakeoff";
  public static final String air_fireBee="fireBee";
  public static final String air_experimentalDropship="experimentalDropship";
