@@ -20,7 +20,7 @@ public class Mbuy extends MunitLogic {
   unitRemove re=remove();
   linkAnd(re);
  }
- public changeCredits sub(int i) {
+ public changeCredits add(int i) {
   changeCredits ch = new changeCredits(team, m);
   ch.resetActivationAfter = "0";
   ch.add = i;
@@ -28,6 +28,8 @@ public class Mbuy extends MunitLogic {
  }
  public unitDetect[] form(Mswitch sw, int ...args) {
   if (sw.horizontal)throw new RuntimeException("horizontal=true");
+  sw.apply();
+  apply();
   unitDetect[] list=sw.list;
   int l=list.length;
   unitDetect[] ru=new unitDetect[l];
@@ -38,7 +40,7 @@ public class Mbuy extends MunitLogic {
   unitDetect des[]=new unitDetect[l];
   for (int i=0;i < l;i++) {
    int pr=-args[i];
-   changeCredits sub=sub(pr);
+   changeCredits sub=add(pr);
    unitDetect de=list[i];
    unitAdd add=new unitAdd(40, 0, -2, de, sp);
    adds[i] = add;
@@ -48,11 +50,11 @@ public class Mbuy extends MunitLogic {
    add.resetActivationAfter = "0";
    unitDetect de2=new unitDetect(40, 0, 20, 20, de);
    ru[i] = de2;
-   changeCredits ok=sub(pr);
+   changeCredits ok=add(pr);
    linkAnd(ok);
    ok.linkAnd(de2);
    sub.append(sub.dlink, de2);
-   changeCredits adc=sub(-pr);
+   changeCredits adc=add(-pr);
    adc.linkAnd(de2);
    adc.append(adc.dlink, de);
    m.apply(de2);
@@ -74,11 +76,10 @@ public class Mbuy extends MunitLogic {
  }
  public void sing(int i) {
   McheckBox checkbox=new McheckBox(x + (w * 0.5f) - 7, y + h, team, m);
-  checkbox.hasUnit().warmup = "0";
   unitAdd add=checkbox.set();
   linkAnd(add);
-  linkAnd(sub(-i));
-  changeCredits ad=sub(i);
+  linkAnd(add(-i));
+  changeCredits ad=add(i);
   checkbox.linkBy(ad);
   unitRemove re=checkbox.remove();
   checkbox.linkBy(re);

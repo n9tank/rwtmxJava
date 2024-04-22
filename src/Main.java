@@ -28,8 +28,6 @@ public class Main {
    sw.add("one");
    Mbuy buy=new Mbuy(200, 200, 0, all);
    buy.init();
-   sw.apply();
-   buy.apply();
    unitDetect[] link=buy.form(sw, 100, 200);
    unitAdd add=new unitAdd(300, 300, 0, all, new spawnUnit(unitType.land_tank, 1));
    add.resetActivationAfter="0";

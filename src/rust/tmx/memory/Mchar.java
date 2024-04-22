@@ -1,26 +1,15 @@
 package rust.tmx.memory;
+import java.util.Arrays;
 import rust.tmx.mapText;
 import rust.tmx.triggers;
 
 public class Mchar {
- public String cr;
- public triggers m;
- public int size=15;
- public float x;
- public float y;
- public String color;
- public mapText chars[];
- public Mchar(float x0, float y0, String str, triggers trg) {
-  cr = str;
-  m = trg;
-  x = x0;
-  y = y0;
+ public static mapText[] form(float x, float y, String str, triggers m) {
+  return form(x, y, str, 15, null, m);
  }
- public void apply() {
-  String str=cr;
+ public static mapText[] form(float x, float y, String str, int size, String color, triggers m) {
   int i=0,l=str.length(),c=0;
   mapText[] ch=new mapText[l];
-  chars = ch;
   do{
    int v = str.offsetByCodePoints(i, 1);
    mapText text=new mapText(x, y, m);
@@ -32,5 +21,7 @@ public class Mchar {
    m.apply(text);
    i = v;
   }while(i < l);
+  ch = Arrays.copyOf(ch, c);
+  return ch;
  }
 }
