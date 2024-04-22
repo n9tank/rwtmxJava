@@ -37,19 +37,19 @@ public class triggers {
    y = y0 -= ma;
    max = 0;
   }
-  x=x0;
+  x = x0;
   return x0;
  }
- protected void add(Callable back){
+ protected void add(Callable back) {
   queue.add(back);
  }
- public void apply(basic back){
-  if(back!=null)add(back);
+ public void apply(basic back) {
+  if (back != null)add(back);
  }
  public triggers(String map_type, Writer out) throws IOException {
   BufferedWriter buff = new BufferedWriter(out);
   mbuff = buff;
-  type=map_type;
+  type = map_type;
   warp = new StringBuilder();
   warp2 = new StringBuilder();
   queue = new ArrayList();
@@ -106,7 +106,7 @@ public class triggers {
  private String type;
  public void finsh() throws Exception {
   mbuff.write("<objectgroup name=\"Triggers\"><object name=\"map_info\"x=\"0\"y=\"0\">");
-  append("type",type);
+  append("type", type);
   append("fog", fog);
   append("introText", info);
   append("winCondition", win);
@@ -117,7 +117,7 @@ public class triggers {
   endObj();
   ArrayList<Callable> arr=queue;
   int size=arr.size(),i=0;
-  while (i<size)arr.get(i++).call();
+  while (i < size)arr.get(i++).call();
   arr.clear();
   mbuff.write("</objectgroup>");
  }
@@ -125,16 +125,14 @@ public class triggers {
   StringBuilder buff=warp;
   buff.setLength(0);
   do{
-   char mod=(char)(i % 90+'!');
-   i /= 90;
+   char mod=(char)(i % 63 + '!');
+   i /= 63;
    if (mod >= '\"')++mod;
    if (mod >= '&')mod += 2;
    if (mod >= ',')++mod;
    if (mod >= '<')++mod;
    if (mod >= '>')++mod;
-   if (mod >= 'a' && mod <= 'z') {
-    mod -= 33;
-   }
+   if (mod >= 'a')mod += 26;
    buff.append(mod);
   }while(i > 0);
   return buff.toString();

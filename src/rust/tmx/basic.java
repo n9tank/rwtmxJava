@@ -82,11 +82,11 @@ public class basic extends set_team implements Callable {
   this(0f, 0f, 0f, 0f, trg);
  }
  public basic(float x0, float y0, float w0, float h0, point g) {
-  super(x0, y0, w0, h0, g, -3);
+  super(x0, y0, w0, h0,-3, g);
   init();
  }
  public basic(float x0, float y0, float w0, float h0, triggers triggers) {
-  super(x0, y0, w0, h0, triggers, -3);
+  super(x0, y0, w0, h0,-3, triggers);
   init();
  }
  protected void before() throws Exception {

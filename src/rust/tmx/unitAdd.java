@@ -3,7 +3,6 @@ package rust.tmx;
 
 
 public class unitAdd extends basic {
- public final int safe_off=300;
  public spawnUnit[] spawnUnit;
  public void fixPool() {
   spawnUnit[] args=spawnUnit;
@@ -18,12 +17,12 @@ public class unitAdd extends basic {
    all -= w;
   }while(++i < len);
  }
- public unitAdd(float x0, float y0, triggers triggers, int team, spawnUnit ...add) {
+ public unitAdd(float x0, float y0,int team, triggers triggers, spawnUnit ...add) {
   super(x0, y0, 0f, 0f, triggers);
   this.team = team;
   spawnUnit = add;
  }
- public unitAdd(float x0, float y0, point g, int team, spawnUnit ...add) {
+ public unitAdd(float x0, float y0,int team, point g, spawnUnit ...add) {
   super(x0, y0, 0f, 0f, g);
   this.team = team;
   spawnUnit = add;

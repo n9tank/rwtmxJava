@@ -6,7 +6,7 @@ public class changeCredits extends basic {
  public void set(int i){
   set=Integer.valueOf(i);
  }
- public changeCredits(triggers triggers, int team) {
+ public changeCredits(int team,triggers triggers) {
   super(triggers);
   unBox = true;
   this.team = team;

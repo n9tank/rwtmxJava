@@ -2,7 +2,7 @@ package rust.tmx;
 
 public class teamTagDetect extends basic {
  private String tag;
- public teamTagDetect(triggers triggers, int team, String add) {
+ public teamTagDetect(int team, String add,triggers triggers) {
   super(triggers);
   this.team = team;
   tag = add;

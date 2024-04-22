@@ -40,16 +40,16 @@ public class MunitBox {
  public spawnUnit unit(int i) {
   return new spawnUnit(unit, i);
  }
- public unitAdd add(spawnUnit unit){
-  return add(x,y,unit);
+ public unitAdd add(spawnUnit unit) {
+  return add(x, y, unit);
  }
- public unitAdd add(float x0,float y0,spawnUnit arg) {
+ public unitAdd add(float x0, float y0, spawnUnit arg) {
   if (!nofix) {
    x0 += w * 0.5f;
    y0 += w * 0.5f;
   }
-  unitAdd add = new unitAdd(x0, y0, m, team, arg);
-  add.resetActivationAfter = "1s";
+  unitAdd add = new unitAdd(x0, y0, team, m, arg);
+  add.resetActivationAfter = "0";
   return add;
  }
  public void link(basic re) {
@@ -68,30 +68,30 @@ public class MunitBox {
    re.linkAnd(nohasUnit());
   }
  }
- public void set(unitObjects obj) throws IOException{
- set(x,y,obj);
+ public void set(unitObjects obj) throws IOException {
+  set(x, y, obj);
  }
- protected void set(float x0,float y0,unitObjects obj) throws IOException {
+ protected void set(float x0, float y0, unitObjects obj) throws IOException {
   if (!nofix) {
    x0 += w * 0.5f;
    y0 += w * 0.5f;
   }
   obj.add(x0, y0, team, unit);
  }
- public unitAdd set(){
-  return set(x,y,unit(1));
+ public unitAdd set() {
+  return set(x, y, unit(1));
  }
- protected unitAdd set(float x0,float y0,spawnUnit unit) {
+ protected unitAdd set(float x0, float y0, spawnUnit unit) {
   unitAdd add=setTag;
   if (add == null) {
-   setTag = add = add(x0,y0,unit);
+   setTag = add = add(x0, y0, unit);
    if (keep)linkNot(setTag);
   }
   return add;
  }
  public unitDetect detect(float x, float y, float w0, float h0) {
   unitDetect de = new unitDetect(x, y, w0, h0, m);
-  de.resetActivationAfter = "1s";
+  de.resetActivationAfter = "0";
   if (!safe) {
    de.team = team;
    de.unitType = unit;
@@ -120,7 +120,7 @@ public class MunitBox {
   unitRemove re=remove;
   if (re == null) {
    remove = re = new unitRemove(x, y, w, h, m);
-   re.resetActivationAfter = "1s";
+   re.resetActivationAfter = "0";
    if (!safe)re.team = team;
   }
   return re;

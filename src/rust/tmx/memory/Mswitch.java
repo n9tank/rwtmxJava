@@ -8,7 +8,6 @@ import rust.tmx.unitObjects;
 import rust.tmx.unitType;
 
 public class Mswitch extends MunitBox {
- private float w2;
  public boolean horizontal;
  public boolean center;
  public unitDetect[] list;
@@ -16,13 +15,12 @@ public class Mswitch extends MunitBox {
  public int index;
  public int textSize=15;
  public String textColor;
- public Mswitch(triggers trg, float x0, float y0, int t, int max) {
-  this(trg, x0, y0, unitType.bio_bugMeleeLarge, t, max, 14f, 40f);
+ public Mswitch(float x0, float y0, int t, int max, triggers trg) {
+  this(x0, y0, unitType.bio_bugMeleeLarge, t, max, 40f, trg);
   safe = true;
  }
- public Mswitch(triggers trg, float x0, float y0, String unit, int t, int max, float w0, float w1) {
+ public Mswitch(float x0, float y0, String unit, int t, int max, float w1, triggers trg) {
   super(x0, y0, w1, w1, t, unit, trg);
-  w2 = w0;
   list = new unitDetect[max];
   text = new mapText[max];
   keep = true;
@@ -63,23 +61,14 @@ public class Mswitch extends MunitBox {
   if (obj == null) {
    add = set(x0, y0, unit(1));
   } else super.set(x0, y0, obj);
-  float w0=w;
-  if (!center) {
-   if (horizontal)x = x0 += w0;
-   else y = y0 += w0;
-  }
   return add;
  }
  public unitDetect add(String s) {
   int i=index++;
-  float x0=x,y0=y;
-  float we=w;
-  if (center) {
-   if (i == list.length >> 1) {
-    if (horizontal)x0 += we;
-    else y0 += we;
-   }
-  }
+  float we=w,off= i * we,x0=x,y0=y;
+  if (!center || i >= list.length >> 1)off += we;
+  if (horizontal)x0 += off;
+  else y0 += off;
   triggers trg=m;
   if (s != null) {
    float wu=we * 0.5f;
@@ -91,23 +80,9 @@ public class Mswitch extends MunitBox {
    text[i] = txt;
    trg.apply(txt);
   }
-  float w1=we;
-  float w3=w1;
-  float w0=w2;
-  float x2=x0;
-  float y2=y0;
-  if (horizontal) {
-   w1 -= w0;
-   x2 += w0;
-  } else {
-   w3 -= w0;
-   y2 += w0;
-  }
-  unitDetect de=detect(x2, y2, w1, w3);
+  unitDetect de=detect(x0, y0, we, we);
   de.onlyIdle = true;
   list[i] = de;
-  if (horizontal) x = x0 += we;
-  else y = y0 += we;
   return de;
  }
  public void apply() {

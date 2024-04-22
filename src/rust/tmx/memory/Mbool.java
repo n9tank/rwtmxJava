@@ -17,15 +17,15 @@ public class Mbool {
   int index=trg.mbool++;
   String str= trg.id(index);
   id = str;
-  teamTagDetect tag = new teamTagDetect(m, 0, str);
-  tag.resetActivationAfter = "1s";
+  teamTagDetect tag = new teamTagDetect(0, str, m);
+  tag.resetActivationAfter = "0";
   bool = tag;
  }
  public teamTags set() {
   teamTags tag=set;
   if (tag == null) {
-   tag = new teamTags(m, 0);
-   tag.resetActivationAfter = "1s";
+   tag = new teamTags(0, m);
+   tag.resetActivationAfter = "0";
    tag.addTeamTags = id;
    set = tag;
   }
@@ -34,8 +34,8 @@ public class Mbool {
  public teamTags unset() {
   teamTags tag=unset;
   if (tag == null) {
-   tag = new teamTags(m, 0);
-   tag.resetActivationAfter = "1s";
+   tag = new teamTags(0, m);
+   tag.resetActivationAfter = "0";
    tag.removeTeamTags = id;
    unset = tag;
   }

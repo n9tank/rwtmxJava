@@ -3,7 +3,7 @@ package rust.tmx;
 public class teamTags extends basic {
  public String addTeamTags;
  public String removeTeamTags;
- public teamTags(triggers triggers, int team) {
+ public teamTags(int team, triggers triggers) {
   super(triggers);
   this.team = team;
  }

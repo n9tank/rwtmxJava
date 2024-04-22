@@ -14,16 +14,16 @@ public class banUnit {
  private banUnit(int team, triggers trg) {
   Mbool mb= new Mbool(trg);
   bool = mb;
-  changeCredits ad = new changeCredits(trg, team);
+  changeCredits ad = new changeCredits(team, trg);
   add = ad;
-  ad.resetActivationAfter = "1s";
+  ad.resetActivationAfter = "0";
   teamTagDetect eq=mb.bool;
   ad.linkOr(eq);
-  ad.add = Integer.MAX_VALUE;
-  changeCredits su = new changeCredits(trg, team);
+  ad.add = 2147483647;
+  changeCredits su = new changeCredits(team, trg);
   sub = su;
   su.append(su.dlink, eq);
-  su.add = Integer.MIN_VALUE;
+  su.add = -2147483647;
  }
  public banUnit(triggers trg, int team) {
   this(team, trg);
@@ -39,7 +39,7 @@ public class banUnit {
   triggers trg=add.m;
   unitDetect de=new unitDetect(0, 0, inf, inf, trg);
   trg.apply(de);
-  de.resetActivationAfter = "1s";
+  de.resetActivationAfter = "0";
   de.includeIncomplete = true;
   de.team = ad.team;
   de.unitType = unit;

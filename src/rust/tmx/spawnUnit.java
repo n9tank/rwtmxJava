@@ -18,6 +18,11 @@ public class spawnUnit {
  public float offsetDir;
  public String type;
  protected int num;
+ public static spawnUnit pad(int i) {
+  spawnUnit sp=new spawnUnit(unitType.other_dummyNonUnitWithTeam, i);
+  sp.spawnChance = 0;
+  return sp;
+ }
  public spawnUnit(String unit, int n) {
   type = unit;
   num = n;
