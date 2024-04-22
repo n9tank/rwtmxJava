@@ -21,24 +21,24 @@ public class triggers {
  public static final String win_none="none";
  protected StringBuilder warp;
  protected StringBuilder warp2;
- protected float x=-16777216;
+ protected float x=-16777216f;
  //坐标太大，可能会导致游戏崩溃，这里取整数精度范围。
- public float y=-250;
- protected float max;
+ protected float y=-100f;
+ protected float my;
  public ArrayList queue;
  public float getPos(float w, float h) {
-  float x0=x;
-  float ma=max;
-  float y0=y;
-  if (h > ma)max = ma = h;
-  x0 += w;
-  if (x0 >= 16777216) {
-   x0 = -16777216;
-   y = y0 -= ma;
-   max = 0;
+  float x0=x,x1=x0;
+  if (h > my)my = h;
+  if ((x0 += w) >= 16777216f) {
+   x0 = -16777216f;
+   y -= my;
+   my = 0;
   }
   x = x0;
-  return x0;
+  return x1;
+ }
+ public float getY() {
+  return y - my;
  }
  protected void add(Callable back) {
   queue.add(back);

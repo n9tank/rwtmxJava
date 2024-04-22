@@ -15,7 +15,7 @@ public class Madder extends MunitBox {
  public unitDetect[] finds;
  protected byte findlink;
  public Madder(triggers trg) {
-  this(trg.getPos(1f, 1f), trg.y, 1f, 0, unitType.other_dummyNonUnitWithTeam, trg);
+  this(trg.getPos(1f, 1f), trg.getY(), 1f, 0, unitType.other_dummyNonUnitWithTeam, trg);
   safe = true;
  }
  public Madder(float x0, float y0, float w0, int t, String type, triggers trg) {

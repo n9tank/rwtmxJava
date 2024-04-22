@@ -25,7 +25,7 @@ public class MunitBox {
  protected unitDetect nohasUnit;
  protected boolean nofix;
  public MunitBox(triggers trg) {
-  this(trg.getPos(0, 0), trg.y, 1f, 1f, 0, unitType.other_dummyNonUnitWithTeam, trg);
+  this(trg.getPos(1f, 1f), trg.getY(), 1f, 1f, 0, unitType.other_dummyNonUnitWithTeam, trg);
   safe = true;
  }
  public MunitBox(float x0, float y0, float w0, float h0, int t, String type, triggers trg) {

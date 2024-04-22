@@ -8,13 +8,13 @@ import rust.tmx.unitObjects;
 import rust.tmx.unitType;
 
 public class Mswitch extends MunitBox {
- public boolean horizontal;
  public boolean center;
  public unitDetect[] list;
  public mapText[] text;
  public int index;
  public int textSize=15;
  public String textColor;
+ public int maxc=Integer.MAX_VALUE;
  public Mswitch(float x0, float y0, int t, int max, triggers trg) {
   this(x0, y0, unitType.bio_bugMeleeLarge, t, max, 40f, trg);
   safe = true;
@@ -32,12 +32,15 @@ public class Mswitch extends MunitBox {
   return hasUnit(false);
  }
  private unitDetect hasUnit(boolean has) {
+  int max=list.length,c= max / maxc;
+  int u;
+  if ((u = max % maxc) > 0)++c;
   float w0=w;
-  float w1=w0 * (list.length + 1);
-  if (horizontal)w = w1;
-  else h = w1;
+  w = c * w0;
+  float h0 =h;
+  h = (c > 1 ?maxc: u) * h0;
   unitDetect ru=has ?super.hasUnit(): super.nohasUnit();
-  w = w0;h = w0;
+  w = w0;h = h0;
   return ru;
  }
  public unitAdd set() {
@@ -53,9 +56,10 @@ public class Mswitch extends MunitBox {
   float x0=x;
   float y0=y;
   if (center) {
-   float w0=(list.length >> 1) * w;
-   if (horizontal)x0 += w0;
-   else y0 += w0;
+   int l=list.length;
+   int w0=(l >> 1);
+   x0 += w0 / maxc * w;
+   y0 += (l > maxc ?maxc: w0 % maxc) / 2 * h;
   }
   unitAdd add=null;
   if (obj == null) {
@@ -65,32 +69,23 @@ public class Mswitch extends MunitBox {
  }
  public unitDetect add(String s) {
   int i=index++;
-  float we=w,off= i * we,x0=x,y0=y;
-  if (!center || i >= list.length >> 1)off += we;
-  if (horizontal)x0 += off;
-  else y0 += off;
+  float x0=x,y0=y;
+  x0 += i / maxc * w;
+  y0 += i % maxc * h;
   triggers trg=m;
+  unitDetect de=detect(x0, y0, w, h);
+  trg.apply(de);
+  de.onlyIdle = true;
+  list[i] = de;
   if (s != null) {
-   float wu=we * 0.5f;
    int size=textSize;
-   mapText txt=new mapText(x0 + wu, y0 + wu - (size * 0.5f), trg);
+   mapText txt=new mapText(x0 + w * 0.5f, y0 + h * 0.5f - (size * 0.5f), trg);
    txt.size = size;
    txt.textLang("", s);
    txt.color = textColor;
    text[i] = txt;
    trg.apply(txt);
   }
-  unitDetect de=detect(x0, y0, we, we);
-  de.onlyIdle = true;
-  list[i] = de;
   return de;
- }
- public void apply() {
-  int len=list.length;
-  triggers trg=m;
-  while (--len >= 0) {
-   trg.apply(list[len]);
-  }
-  super.apply();
  }
 }
