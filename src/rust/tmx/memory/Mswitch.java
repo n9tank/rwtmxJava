@@ -8,7 +8,6 @@ import rust.tmx.unitObjects;
 import rust.tmx.unitType;
 
 public class Mswitch extends MunitBox {
- public boolean center;
  public unitDetect[] list;
  public mapText[] text;
  public int index;
@@ -24,6 +23,7 @@ public class Mswitch extends MunitBox {
   list = new unitDetect[max];
   text = new mapText[max];
   keep = true;
+  nofix = true;
  }
  public unitDetect hasUnit() {
   return hasUnit(true);
@@ -55,12 +55,12 @@ public class Mswitch extends MunitBox {
  private unitAdd setN(unitObjects obj) throws IOException {
   float x0=x;
   float y0=y;
-  if (center) {
-   int l=list.length;
-   int w0=(l >> 1);
-   x0 += w0 / maxc * w;
-   y0 += (l > maxc ?maxc: w0 % maxc) / 2 * h;
-  }
+  int l=list.length;
+  int u=l % maxc;
+  int w0=(l / maxc);
+  if (u > 0)++w0;
+  x0 += w0 * 0.5f * w;
+  y0 += (l > maxc ? maxc: u) * 0.5f * h;
   unitAdd add=null;
   if (obj == null) {
    add = set(x0, y0, unit(1));
@@ -79,7 +79,7 @@ public class Mswitch extends MunitBox {
   list[i] = de;
   if (s != null) {
    int size=textSize;
-   mapText txt=new mapText(x0 + w * 0.5f, y0 + h * 0.5f - (size * 0.5f), trg);
+   mapText txt=new mapText(x0 + w * 0.5f, y0 + h * 0.5f, trg);
    txt.size = size;
    txt.textLang("", s);
    txt.color = textColor;

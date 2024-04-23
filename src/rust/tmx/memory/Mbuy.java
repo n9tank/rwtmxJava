@@ -45,7 +45,7 @@ public class Mbuy extends MunitLogic {
    int pr=-args[i];
    changeCredits sub=add(pr);
    unitDetect de=list[i];
-   MunitBox box=new MunitBox(x0++, y0, 1, 1, 0, unitType.other_dummyNonUnitWithTeam, m);
+   MunitBox box=new MunitBox(x0++, y0, 1, 1, team, unitType.other_dummyNonUnitWithTeam, m);
    box.safe = true;
    box.nofix = true;
    unitAdd add=box.set();
