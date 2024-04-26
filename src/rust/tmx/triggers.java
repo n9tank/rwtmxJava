@@ -40,11 +40,8 @@ public class triggers {
  public float getY() {
   return y - my;
  }
- protected void add(Callable back) {
-  queue.add(back);
- }
- public void apply(basic back) {
-  if (back != null)add(back);
+ public void apply(Callable back) {
+  if (back != null)queue.add(back);
  }
  public triggers(String map_type, Writer out) throws IOException {
   BufferedWriter buff = new BufferedWriter(out);
@@ -120,6 +117,7 @@ public class triggers {
   while (i < size)arr.get(i++).call();
   arr.clear();
   mbuff.write("</objectgroup>");
+  mbuff.flush();
  }
  public String id(int i) {
   StringBuilder buff=warp;

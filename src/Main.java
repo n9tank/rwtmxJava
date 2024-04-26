@@ -6,6 +6,7 @@ import rust.tmx.spawnUnit;
 import rust.tmx.triggers;
 import rust.tmx.unitAdd;
 import rust.tmx.unitType;
+import rust.tmx.memory.banUnit;
 public class Main {
  public static void main(String ...arg) throws Exception {
   FileWriter out=new FileWriter("sdcard/a.txt");
@@ -27,6 +28,7 @@ public class Main {
    ad.resetActivationAfter = "0";
    all.apply(ad);*/
   // 列表测试
+  /*
   Mswitch sw=new Mswitch(3000, 0, 8, 4, all);
   sw.set();
   sw.add("两栖飞机 1600");
@@ -49,10 +51,10 @@ public class Main {
   all.apply(add);
   add = new unitAdd(1220, 1120, 8, all, new spawnUnit(unitType.land_modularSpider, 1));
   add.resetActivationAfter = "0";
-  buy.linkAnd(add, 1);
-  all.apply(add);
+  buy.linkAnd(add, 3);
+  all.apply(add);*/
+  banUnit.air(2400,2400,all);
   all.finsh();
-  all.mbuff.flush();
   System.out.println();
  }
 }

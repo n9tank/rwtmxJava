@@ -9,7 +9,7 @@ public class point implements Cloneable,Callable {
  protected float x;
  protected float y;
  protected void apply(){
-  m.add(this);
+  m.apply(this);
  }
  public point(float x0, float y0, point g) {
   this(g.x + x0, g.y + y0, g.m);

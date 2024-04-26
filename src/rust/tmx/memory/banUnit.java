@@ -1,10 +1,14 @@
 package rust.tmx.memory;
 import java.util.ArrayList;
 import rust.tmx.changeCredits;
+import rust.tmx.spawnUnit;
 import rust.tmx.teamTagDetect;
 import rust.tmx.teamTags;
 import rust.tmx.triggers;
+import rust.tmx.unitAdd;
 import rust.tmx.unitDetect;
+import rust.tmx.unitRemove;
+import rust.tmx.unitType;
 
 public class banUnit {
  public changeCredits add;
@@ -50,6 +54,31 @@ public class banUnit {
   tr.linkOr(de);
   tr = mb.unset();
   tr.append(tr.dlink, de);
+ }
+ public static void air(int w, int h, triggers m) {
+  unitRemove re=new unitRemove(0, 0, w + 300, h + 300, m);
+  re.team = -2;
+  re.resetActivationAfter = "10s";
+  int c=(int)(Math.ceil(w / 600f) * Math.ceil(h / 600f));
+  spawnUnit[] sp=new spawnUnit[c];
+  unitAdd ad=new unitAdd(300, 300, -2, m, sp);
+  ad.resetActivationAfter = "10s";
+  int u=0;
+  int j=0;
+  while (j < h) {
+   int i=0;
+   while (i < w) {
+    spawnUnit s=new spawnUnit(unitType.buid_c_antiAirTurretT3, 1);
+    s.offsetX = i;
+    s.offsetY = j;
+    s.offsetHeight = -130;
+    sp[u++] = s;
+    i += 600;
+   }
+   j += 600;
+  }
+  m.apply(re);
+  m.apply(ad);
  }
  public banUnit put(int team) {
   banUnit ban=new banUnit(team, add.m);
