@@ -77,7 +77,6 @@ public class basic extends set_team implements Callable {
   msg = new ArrayList();
   unBox = true;
  }
- protected void apply(){}
  public basic(triggers trg) {
   this(0f, 0f, 0f, 0f, trg);
  }

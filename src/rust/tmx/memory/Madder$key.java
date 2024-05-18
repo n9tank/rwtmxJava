@@ -1,19 +1,24 @@
 package rust.tmx.memory;
 
-public class Madder$key{
+public class Madder$key implements Comparable {
+ public int compareTo(Object obj) {
+  Madder$key key=(Madder$key)obj;
+  int u=max-key.max;
+  if(u!=0)return u;
+  return min-key.min;
+ }
  public int hashCode() {
   return super.hashCode();
  }
  public boolean equals(Object obj) {
-  Madder$key key=(Madder$key)obj;
-  return key.min==min&&key.max==max;
+  return compareTo(obj)==0;
  } 
  protected Madder$key(int i, int x) {
   min=i;
   max=x;
-  int h=1;
-  h=(h<<5)-h+i;
-  h=(h<<5)-h+x;
+  int h=17;
+  h=h*31+i;
+  h=h*31+x;
   hash=h;
  }
  private int hash;
