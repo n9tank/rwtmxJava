@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
 public class triggers {
+ public static final boolean idWithName=true;
+ //id 会出现神奇Bug，不知道什么原因，估计是LUKE的屎
  public static final String map_survival="survival";
  public static final String map_="skirmish";
  public static final String map_mission="mission";
@@ -120,6 +122,7 @@ public class triggers {
   mbuff.flush();
  }
  public String id(int i) {
+  if(!idWithName)return String.valueOf(i);
   StringBuilder buff=warp;
   buff.setLength(0);
   do{

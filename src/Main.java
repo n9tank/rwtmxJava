@@ -28,14 +28,13 @@ public class Main {
    ad.resetActivationAfter = "0";
    all.apply(ad);*/
   // 列表测试
-  /*
-  Mswitch sw=new Mswitch(3000, 0, 8, 4, all);
+  Mswitch sw=new Mswitch(1000, 0, 8, 4, all);
   sw.set();
   sw.add("两栖飞机 1600");
   sw.add("猛犸 3210");
   sw.add("实验坦克 11200");
   sw.add("模块蜘蛛 72000");
-  Mbuy buy=new Mbuy(3080, 0, 8, all);
+  Mbuy buy=new Mbuy(1080, 0, 8, all);
   buy.form(sw, 1600, 3210, 11200, 72000);
   unitAdd add=new unitAdd(1220, 1120, 8, all, new spawnUnit(unitType.air_c_amphibiousJet, 1));
   add.resetActivationAfter = "0";
@@ -52,8 +51,8 @@ public class Main {
   add = new unitAdd(1220, 1120, 8, all, new spawnUnit(unitType.land_modularSpider, 1));
   add.resetActivationAfter = "0";
   buy.linkAnd(add, 3);
-  all.apply(add);*/
-  banUnit.air(2400,2400,all);
+  all.apply(add);
+ // banUnit.air(2400,2400,all);
   all.finsh();
   System.out.println();
  }

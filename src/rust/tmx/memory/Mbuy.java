@@ -39,8 +39,9 @@ public class Mbuy extends MunitLogic {
   float x0=m.getPos(l, 1);
   float y0=m.getY();
   unitRemove re=new unitRemove(x0, y0, l, 1, m);
-  unitAdd adds[]=new unitAdd[l];
-  unitDetect des[]=new unitDetect[l];
+  unitDetect has=new unitDetect(x0,y0,l,1,m);
+  has.resetActivationAfter="0";
+  m.apply(has);
   for (int i=0;i < l;i++) {
    int pr=-args[i];
    changeCredits sub=add(pr);
@@ -49,7 +50,7 @@ public class Mbuy extends MunitLogic {
    box.safe = true;
    box.nofix = true;
    unitAdd add=box.set();
-   adds[i] = add;
+   add.append(add.dlink,has);
    re.append(re.dlink, de);
    add.linkAnd(de);
    sub.linkAnd(de);
@@ -66,13 +67,6 @@ public class Mbuy extends MunitLogic {
    m.apply(sub);
    m.apply(adc);
    m.apply(ok);
-   des[i] = de2;
-  }
-  for (int i=0;i < l;i++) {
-   unitAdd add=adds[i];
-   for (int j=0;j < l;j++) {
-    add.append(add.dlink, des[j]);
-   }
   }
   m.apply(re);
  }

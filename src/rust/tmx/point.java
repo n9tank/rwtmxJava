@@ -38,7 +38,7 @@ public class point implements Cloneable,Callable {
   buff.write(type);
   String ids=id;
   if (ids != null) {
-   buff.write("\"name=\"");
+   buff.write(triggers.idWithName?"\"name=\"":"\"id=\"");
    buff.write(ids);
   }
   buff.write("\"x=\"");
