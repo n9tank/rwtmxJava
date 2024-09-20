@@ -67,8 +67,8 @@ public class basic extends set_team implements Callable {
  }
  public void msg(String lang, String mes) {
   ArrayList list = msg;
-  list.add(mes);
   list.add(lang);
+  list.add(mes);
  }
  private void init() {
   alsoLink = new StringBuilder();
@@ -106,8 +106,9 @@ public class basic extends set_team implements Callable {
   triggers.append("globalMessage_textColor", msgColor);
   triggers.append("globalMessage_delayPerChar", msgDelay);
   ArrayList<String> arr=msg;
-  int i=arr.size();
-  while (--i >= 0)triggers.append("globalMessage".concat(arr.get(i)), arr.get(--i));
+  int len=arr.size();
+  for(int i=0;i<len;)
+  triggers.append("globalMessage".concat(arr.get(i++)), arr.get(i++));
  }
  public basic cloneAll() throws CloneNotSupportedException {
   basic bs=(basic)clone();

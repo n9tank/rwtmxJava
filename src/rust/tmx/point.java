@@ -8,7 +8,8 @@ public class point implements Cloneable,Callable {
  public final triggers m;
  protected float x;
  protected float y;
- protected void apply(){
+ public boolean isName;
+ protected void apply() {
   m.apply(this);
  }
  public point(float x0, float y0, point g) {
@@ -33,12 +34,14 @@ public class point implements Cloneable,Callable {
  protected void before() throws Exception {
   triggers triggers=m;
   BufferedWriter buff=triggers.mbuff;
-  buff.write("<object type=\"");
+  buff.write("<object ");
+  if (!isName)buff.write("type=\"");
+  else buff.write("name=\"");
   String type=getClass().getSimpleName();
   buff.write(type);
   String ids=id;
-  if (ids != null) {
-   buff.write(triggers.idWithName?"\"name=\"":"\"id=\"");
+  if (ids != null && !isName) {
+   buff.write("\"name=\"");
    buff.write(ids);
   }
   buff.write("\"x=\"");

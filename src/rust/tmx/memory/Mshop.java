@@ -7,14 +7,14 @@ import rust.tmx.unitDetect;
 import rust.tmx.unitRemove;
 import rust.tmx.unitType;
 
-public class Mbuy extends MunitLogic {
+public class Mshop extends MunitLogic {
  public McheckBox sign;
  public unitDetect[] form;
- public Mbuy(float x0, float y0, int t, triggers trg) {
+ public Mshop(float x0, float y0, int t, triggers trg) {
   this(x0, y0, 40f, 40f, t, unitType.buid_turret, trg);
   safe = true;
  }
- public Mbuy(float x0, float y0, float w, float h, int t, String type, triggers trg) {
+ public Mshop(float x0, float y0, float w, float h, int t, String type, triggers trg) {
   super(x0, y0, w, h, t, type, trg);
  }
  public void apply() {

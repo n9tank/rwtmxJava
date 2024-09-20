@@ -18,8 +18,8 @@ public class mapText extends basic {
  }
  public void textLang(String lang,String add){
   ArrayList<String> arr=text;
-  arr.add(add);
   arr.add(lang);
+  arr.add(add);
  }
  protected void before() throws Exception {
   super.before();
@@ -30,7 +30,10 @@ public class mapText extends basic {
   triggers.append("textOffsety",offY);
   triggers.append("textSize",size,0);
   ArrayList<String> arr=text;
-  int i=arr.size();
-  while (--i >= 0)triggers.append("text".concat(arr.get(i)), arr.get(--i));
+  int len=arr.size();
+  int i=0;
+  do{
+  triggers.append("text".concat(arr.get(i++)), arr.get(i++));
+  }while(i<len);
  }
 }

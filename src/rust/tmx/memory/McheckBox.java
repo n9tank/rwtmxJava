@@ -7,6 +7,7 @@ import rust.tmx.spawnUnit;
 import rust.tmx.basic;
 
 public class McheckBox extends  MunitLogic {
+ public float off=-8;
  public McheckBox(float x0, float y0, int t, triggers trg) {
   this(x0, y0, 14f, t, unitType.sea_lightSub, trg);
   safe = true;
@@ -17,7 +18,7 @@ public class McheckBox extends  MunitLogic {
  }
  public unitAdd set() {
   spawnUnit add=unit(1);
-  if (safe)add.offsetHeight = -8;
+  add.offsetHeight = off;
   return set(x, y, add);
  }
  protected void dosome(unitDetect de) {

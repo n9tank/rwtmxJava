@@ -8,8 +8,11 @@ public class unitAdd extends basic {
   spawnUnit[] args=spawnUnit;
   int len=args.length,i=len;
   float all=0;
-  while (--i >= 0)all += args[i].spawnChance;
-  i = 0;
+  int i=0;
+  do{
+  all += args[i].spawnChance;
+  }while(++i < len);
+  i=0;
   do{
    spawnUnit sp=args[i];
    float w=sp.spawnChance;
