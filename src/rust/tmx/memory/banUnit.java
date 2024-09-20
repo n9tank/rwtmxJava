@@ -9,13 +9,13 @@ import rust.tmx.unitAdd;
 import rust.tmx.unitDetect;
 import rust.tmx.unitRemove;
 import rust.tmx.unitType;
+import java.util.List;
 
 public class banUnit {
  public changeCredits add;
  public changeCredits sub;
  private Mbool bool;
- private ArrayList<String> copy;
- private banUnit(int team, triggers trg) {
+ public banUnit(int team, triggers trg) {
   Mbool mb= new Mbool(trg);
   bool = mb;
   changeCredits ad = new changeCredits(team, trg);
@@ -29,15 +29,7 @@ public class banUnit {
   su.append(su.dlink, eq);
   su.add = -2147483647;
  }
- public banUnit(triggers trg, int team) {
-  this(team, trg);
-  copy = new ArrayList();
- }
  public void add(String unit) {
-  copy.add(unit);
-  addN(unit);
- }
- private void addN(String unit) {
   changeCredits ad=add;
   float inf=16777216;
   triggers trg=add.m;
@@ -80,13 +72,10 @@ public class banUnit {
   m.apply(re);
   m.apply(ad);
  }
- public banUnit put(int team) {
-  banUnit ban=new banUnit(team, add.m);
-  ban.copy = (ArrayList)copy.clone();
-  int size=copy.size();
-  while (--size >= 0) {
-   ban.addN(copy.get(size));
-  }
+ public static banUnit put(int team, triggers m, List<String> list) {
+  banUnit ban=new banUnit(team, m);
+  for (String str:list)
+   ban.add(str);
   return ban;
  }
  public void apply() {
