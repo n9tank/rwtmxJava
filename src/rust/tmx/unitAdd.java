@@ -6,13 +6,13 @@ public class unitAdd extends basic {
  public spawnUnit[] spawnUnit;
  public void fixPool() {
   spawnUnit[] args=spawnUnit;
-  int len=args.length,i=len;
+  int len=args.length;
   float all=0;
   int i=0;
   do{
-  all += args[i].spawnChance;
+   all += args[i].spawnChance;
   }while(++i < len);
-  i=0;
+  i = 0;
   do{
    spawnUnit sp=args[i];
    float w=sp.spawnChance;
@@ -20,12 +20,12 @@ public class unitAdd extends basic {
    all -= w;
   }while(++i < len);
  }
- public unitAdd(float x0, float y0,int team, triggers triggers, spawnUnit ...add) {
+ public unitAdd(float x0, float y0, int team, triggers triggers, spawnUnit ...add) {
   super(x0, y0, 0f, 0f, triggers);
   this.team = team;
   spawnUnit = add;
  }
- public unitAdd(float x0, float y0,int team, point g, spawnUnit ...add) {
+ public unitAdd(float x0, float y0, int team, point g, spawnUnit ...add) {
   super(x0, y0, 0f, 0f, g);
   this.team = team;
   spawnUnit = add;

@@ -1,5 +1,6 @@
 package rust.tmx.memory;
 import java.util.HashMap;
+import rust.tmx.llvm.ifBlock;
 import rust.tmx.triggers;
 import rust.tmx.unitDetect;
 
@@ -66,11 +67,12 @@ public class Mfinder {
   } else ru = of(min, max);
   return ru;
  }
- public findLink findLink(int in) {
+ public ifBlock findLink(int in) {
   int tmp=initLink();
   int i=getOf(tmp, in);
   unitDetect[] add=finds;
-  findLink link= new findLink();
+  unitDetect links[]=new unitDetect[2];
+  unitDetect dlinks[]=new unitDetect[1];
   unitDetect de=add[i];
   int max=de.maxUnits;
   if (max > 0 || (max == 0 && tmp > 0)) {
@@ -84,12 +86,12 @@ public class Mfinder {
     --i;
     eqz = in < max;
    }
-   if (eqz)link.link2 = de;
-   else link.dlink = de;
+   if (eqz)links[1] = de;
+   else dlinks[0] = de;
    de = add[i];
   }
-  link.link = de;
-  return link;
+  links[0] = de;
+  return new ifBlock(links, dlinks, false);
  }
  private unitDetect add(int min, int ax) {
   unitDetect de=box.detect();

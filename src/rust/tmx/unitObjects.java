@@ -4,9 +4,10 @@ import java.io.IOException;
 
 public class unitObjects {
  private BufferedWriter out;
- public unitObjects(BufferedWriter wt) throws IOException {
+ public unitObjects(BufferedWriter wt,boolean noHead) throws IOException {
   out = wt;
-  wt.write("<objectgroup name=\"UnitObjects\">");
+  if (!noHead)
+   wt.write("<objectgroup name=\"UnitObjects\">");
  }
  public void add(float x, float y, int team, String type) throws IOException {
   BufferedWriter wt=out;

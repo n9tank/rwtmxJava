@@ -1,7 +1,7 @@
 package rust.tmx;
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
-import rust.tmx.memory.findLink;
+import rust.tmx.llvm.ifBlock;
 
 public class basic extends set_team implements Callable {
  public ArrayList msg;
@@ -26,10 +26,15 @@ public class basic extends set_team implements Callable {
   }
   return null;
  }
- public void link(findLink find) {
-  linkAnd(find.link);
-  linkAnd(find.link2);
-  append(dlink, find.dlink);
+ public void link(ifBlock find) {
+  basic[] links=find.links;
+  if (links != null) {
+   if (find.or)linkOr(links);
+   else linkAnd(links);
+  }
+  links = find.dlinks;
+  if (links != null)
+   append(dlink, links);
  }
  public void linkAnd(basic bs) {
   StringBuilder buff=link;
@@ -39,10 +44,8 @@ public class basic extends set_team implements Callable {
   append(buff, bs);
  }
  public void linkAnd(basic ...arg) {
-  int size=arg.length;
-  while (--size >= 0) {
-   linkAnd(arg[size]);
-  }
+  for (basic link:arg)
+   linkAnd(link);
  }
  public void linkOr(basic bs) {
   if (linkAll)throw new RuntimeException("linkOr():linkAll=true");
@@ -59,11 +62,8 @@ public class basic extends set_team implements Callable {
   }
  }
  public static void append(StringBuilder buff, basic ...arg) {
-  int size=arg.length;
-  while (--size >= 0) {
-   basic bs=arg[size];
-   append(buff, bs);
-  }
+  for (basic link:arg)
+   append(buff, link);
  }
  public void msg(String lang, String mes) {
   ArrayList list = msg;
@@ -81,11 +81,11 @@ public class basic extends set_team implements Callable {
   this(0f, 0f, 0f, 0f, trg);
  }
  public basic(float x0, float y0, float w0, float h0, point g) {
-  super(x0, y0, w0, h0,-3, g);
+  super(x0, y0, w0, h0, -3, g);
   init();
  }
  public basic(float x0, float y0, float w0, float h0, triggers triggers) {
-  super(x0, y0, w0, h0,-3, triggers);
+  super(x0, y0, w0, h0, -3, triggers);
   init();
  }
  protected void before() throws Exception {
@@ -107,8 +107,8 @@ public class basic extends set_team implements Callable {
   triggers.append("globalMessage_delayPerChar", msgDelay);
   ArrayList<String> arr=msg;
   int len=arr.size();
-  for(int i=0;i<len;)
-  triggers.append("globalMessage".concat(arr.get(i++)), arr.get(i++));
+  for (int i=0;i < len;)
+   triggers.append("globalMessage".concat(arr.get(i++)), arr.get(i++));
  }
  public basic cloneAll() throws CloneNotSupportedException {
   basic bs=(basic)clone();
