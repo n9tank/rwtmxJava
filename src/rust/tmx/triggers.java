@@ -101,16 +101,23 @@ public class triggers {
  public String waves;
  private String type;
  public void finsh() throws Exception {
-  mbuff.write("<objectgroup name=\"Triggers\"><object name=\"map_info\"x=\"0\"y=\"0\">");
-  append("type", type);
-  append("fog", fog);
-  append("introText", info);
-  append("winCondition", win);
-  append("shareFogWithAllies", shareFog);
-  append("survivalWavesClassic", oldWaves);
-  append("startWithMusic", music);
-  append("survivalWaves", waves);
-  endObj();
+  finsh(false);
+ }
+ public void finsh(boolean noHead) throws Exception {
+  if (!noHead)
+   mbuff.write("<objectgroup name=\"Triggers\">");
+  if (type != null) {
+   mbuff.write("<object name=\"map_info\"x=\"0\"y=\"0\">");
+   append("type", type);
+   append("fog", fog);
+   append("introText", info);
+   append("winCondition", win);
+   append("shareFogWithAllies", shareFog);
+   append("survivalWavesClassic", oldWaves);
+   append("startWithMusic", music);
+   append("survivalWaves", waves);
+   endObj();
+  }
   ArrayList<Callable> arr=queue;
   int size=arr.size(),i=0;
   while (i < size)arr.get(i++).call();
