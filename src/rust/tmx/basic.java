@@ -27,6 +27,7 @@ public class basic extends set_team implements Callable {
   return null;
  }
  public void link(ifBlock find) {
+  if (find == null)return;
   basic[] links=find.links;
   if (links != null) {
    if (find.or)linkOr(links);

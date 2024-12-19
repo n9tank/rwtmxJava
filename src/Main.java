@@ -1,6 +1,7 @@
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import rust.tmx.llvm.llvmUtil;
 import rust.tmx.memory.Mshop;
 import rust.tmx.memory.Mswitch;
 import rust.tmx.spawnUnit;
@@ -43,24 +44,21 @@ public class Main {
   sw.add("猛犸 3210");
   sw.add("实验坦克 11200");
   sw.add("模块蜘蛛 72000");
+  llvmUtil llvm=new llvmUtil(all);
   Mshop buy=new Mshop(1080, 0, 8, all);
   buy.form(sw, 1600, 3210, 11200, 72000);
-  unitAdd add=new unitAdd(1220, 1120, 8, all, new spawnUnit(unitType.air_c_amphibiousJet, 1));
+  unitAdd add=llvm.unitAdd(1220, 1120, 8, new spawnUnit(unitType.air_c_amphibiousJet, 1));
   add.resetActivationAfter = "0";
   buy.linkAnd(add, 0);
-  all.apply(add);
-  add = new unitAdd(1220, 1120, 8, all, new spawnUnit(unitType.old_mammothtank, 1));
+  add = llvm.unitAdd(1220, 1120, 8, new spawnUnit(unitType.old_mammothtank, 1));
   add.resetActivationAfter = "0";
   buy.linkAnd(add, 1);
-  all.apply(add);
-  add = new unitAdd(1220, 1120, 8, all, new spawnUnit(unitType.old_experimentaltank, 1));
+  add = llvm.unitAdd(1220, 1120, 8, new spawnUnit(unitType.old_experimentaltank, 1));
   add.resetActivationAfter = "0";
   buy.linkAnd(add, 2);
-  all.apply(add);
-  add = new unitAdd(1220, 1120, 8, all, new spawnUnit(unitType.land_modularSpider, 1));
+  add = llvm.unitAdd(1220, 1120, 8, new spawnUnit(unitType.land_modularSpider, 1));
   add.resetActivationAfter = "0";
   buy.linkAnd(add, 3);
-  all.apply(add);
  }
  public static void main(String ...arg) throws Exception {
   BufferedWriter out=new BufferedWriter(new FileWriter("sdcard/a.txt"));
