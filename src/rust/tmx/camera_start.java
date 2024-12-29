@@ -13,7 +13,7 @@ public class camera_start extends point {
  protected void before() throws Exception {
   super.before();
   triggers trg=m;
-  trg.mbuff.write('>');
-  m.append("zoomTo", zoomTo, 0);
+  trg.start_p=true;
+  trg.append("zoomTo", zoomTo, 0);
  }
 }

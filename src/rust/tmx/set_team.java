@@ -12,8 +12,7 @@ public class set_team extends fall {
  }
  protected void before() throws Exception {
   super.before();
-  triggers trg=m;
-  trg.mbuff.write('>');
-  trg.append("team", team, -3);
+  m.start_p = true;
+  m.append("team", team, -3);
  }
 }

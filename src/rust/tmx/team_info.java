@@ -26,6 +26,7 @@ public class team_info extends point implements Callable {
  protected void before() throws Exception {
   super.before();
   triggers trg=m;
+  trg.start_p = true;
   trg.append("team", team, -3);
   trg.append("basicAI", basicAI);
   trg.append("disabledAI", disabledAI);

@@ -54,10 +54,12 @@ public class triggers {
  protected int mid;
  public int mbool;
  protected boolean start;
+ protected boolean start_p;
  protected void append(String key, String value) throws IOException {
   if (value != null) {
    BufferedWriter buff=mbuff;
    if (!start) {
+    if (start_p)buff.write('>');
     start = true;
     buff.write("<properties>");
    }
@@ -91,6 +93,7 @@ public class triggers {
    start = false;
    buff.write("</properties></object>");
   } else buff.write("/>");
+  start_p = false;
  }
  public String fog;
  public String info;

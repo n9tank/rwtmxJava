@@ -56,6 +56,12 @@ public class basic extends set_team implements Callable {
   if (linkAll)throw new RuntimeException("linkOr():linkAll=true");
   append(link, arg);
  }
+ public void dlink(basic bs) {
+  append(dlink, bs);
+ }
+ public void dlink(basic ...bs) {
+  append(dlink, bs);
+ }
  public static void append(StringBuilder buff, basic bs) {
   if (bs != null) {
    buff.append(bs.id());
